@@ -13,13 +13,14 @@ public class Game extends ApplicationAdapter {
 
 	// Graphics
 	SpriteBatch batch;
-	public GameCamera cam;
+	public static GameCamera cam;
 
 	// Objekt
-	ObjectHandler oh;
+	static ObjectHandler oh;
 
 	// gameplay
 	public static boolean GameStarted = false;
+	public static int score;
 
 	public final static int WIDTHT = 180;
 	public final static int HEIGHT = 320;
@@ -53,6 +54,12 @@ public class Game extends ApplicationAdapter {
 		// Måla saker här
 		oh.draw(batch);
 		batch.end();
+	}
+
+	public static void restart(){
+		cam.setPosition(0, 0);
+		GameStarted = false;
+		oh.restart();
 	}
 	
 	@Override

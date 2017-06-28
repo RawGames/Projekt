@@ -44,6 +44,11 @@ public class ObjectHandler {
         }
     }
 
+    public void restart(){
+        // resets position
+        player.start();
+    }
+
     public void dispose(){
         playerImg.dispose();
     }
