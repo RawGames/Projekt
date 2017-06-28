@@ -24,6 +24,7 @@ public class Game extends ApplicationAdapter {
 		cam = new GameCamera(WIDTHT, HEIGHT);
 		cam.setPosition(0,0);
 		cam.update();
+
 	}
 
 	@Override
@@ -46,5 +47,6 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+
 	}
 }
