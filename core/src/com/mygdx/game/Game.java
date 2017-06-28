@@ -14,6 +14,7 @@ public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	GameCamera cam;
 
+	//test bild
 	Texture img;
 
 	public final static int WIDTHT = 180;
