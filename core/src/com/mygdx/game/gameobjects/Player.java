@@ -72,21 +72,23 @@ public class Player {
         }
 
         // new best y
-        if (position.y > bestY) bestY = position.y;
+        if (position.y > bestY && !dead) bestY = position.y;
 
         if (position.y < Game.cam.y+rad){
             // startar om om man nuddar botten
             startoverTimer.timerStart();
             cameraShake.timerStart();
-            if (!dead) velocity.y = 3;
+            if (!dead) velocity.y = 4;
             dead = true;
         }
         if (position.x < rad || position.x > Game.WIDTHT-rad){
             // startar om om man nuddar sidorna
             startoverTimer.timerStart();
             cameraShake.timerStart();
+            if (!dead) velocity.y = 4;
             dead = true;
             velocity.x = -velocity.x;
+
         }
 
         // shake camera if dead
