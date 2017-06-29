@@ -38,7 +38,7 @@ public class ObjectHandler {
         if (Game.score % 5 == 0){
             if (Game.score > previousScore){
                 previousScore = Game.score;
-                obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 150, movingPlatformImg));
+                obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 250, movingPlatformImg));
             }
         }
 
@@ -83,6 +83,12 @@ public class ObjectHandler {
     public void restart(){
         // resets position
         player.start();
+
+        // delete the obsticles
+        obsticles.clear();
+
+        // resets previous score
+        previousScore = 0;
     }
 
     public void dispose(){
