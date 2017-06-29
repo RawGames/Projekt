@@ -36,7 +36,7 @@ public class Player {
         position = new Vector2(Game.WIDTHT/2,Game.HEIGHT/3);
         velocity = new Vector2(0,0);
         bestY = position.y;
-        grav = .25f;
+        grav = .20f;
 
         startoverTimer = new Timer(150, false);
         cameraShake = new Timer (15, false);
@@ -74,6 +74,7 @@ public class Player {
         // new best y
         if (position.y > bestY && !dead) bestY = position.y;
 
+        // dör om man nuddar botten
         if (position.y < Game.cam.y+rad){
             // startar om om man nuddar botten
             startoverTimer.timerStart();
@@ -81,6 +82,7 @@ public class Player {
             if (!dead) velocity.y = 4;
             dead = true;
         }
+        // Dör om man nuddar sidorna
         if (position.x < rad || position.x > Game.WIDTHT-rad){
             // startar om om man nuddar sidorna
             startoverTimer.timerStart();
@@ -99,8 +101,12 @@ public class Player {
         // starts over if timer is 0
         if (startoverTimer.checkTimer()) Game.restart();
 
+        // flyttar kameran om positionen är över halva skärmen
         if (position.y > Game.HEIGHT/2)
             Game.cam.translate(0, (bestY - Game.WIDTHT/2 - Game.cam.y)*0.05f);
+
+        // uppdaterar poängen
+        Game.score = (int)((bestY - Game.HEIGHT/3)/100);
 
         // addera hastighet till position
         position.add(velocity);
