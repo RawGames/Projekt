@@ -33,4 +33,11 @@ public class Timer {
         return false;
     }
 
+    // subtraherar timern och kollar om den är 0
+    public boolean checkTimerContinue(){
+        if (time >= 0 && timerStart) time--;
+        if (time <= 0) return true;
+        return false;
+    }
+
 }

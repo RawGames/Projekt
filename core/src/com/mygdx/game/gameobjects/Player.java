@@ -90,8 +90,8 @@ public class Player {
         }
 
         // shake camera if dead
-        if (dead && !cameraShake.checkTimer()){
-            Game.cam.setPosition(randomRange(-2, 2), 0);
+        if (dead && !cameraShake.checkTimerContinue()){
+            Game.cam.setPosition(randomRange(-3, 3), Game.cam.y);
         }
 
         // starts over if timer is 0
