@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.Game;
+import com.mygdx.game.utils.Timer;
 
 /**
  * Created by sebbe on 2017-06-28.
@@ -20,6 +21,11 @@ public class Player {
     public Vector2 position;
     public Vector2 velocity;
 
+    // Timers
+    Timer startoverTimer;
+
+    boolean dead;
+
     float grav;
     public int rad;
     float bestY;
@@ -30,6 +36,9 @@ public class Player {
         velocity = new Vector2(0,0);
         bestY = position.y;
         grav = .25f;
+
+        startoverTimer = new Timer(150, false);
+        dead = false;
     }
 
     public Player(Texture playerTexture){
@@ -48,7 +57,7 @@ public class Player {
         }
 
         // kollar efter touch
-        if (Gdx.input.justTouched()){
+        if (Gdx.input.justTouched() && !dead){
             Game.GameStarted = true;
 
             // tar position och fixar till skit med matte
@@ -64,12 +73,19 @@ public class Player {
 
         if (position.y < Game.cam.y+rad){
             // startar om om man nuddar botten
-            Game.restart();
+            startoverTimer.timerStart();
+            if (!dead) velocity.y = -velocity.y;
+            dead = true;
         }
         if (position.x < rad || position.x > Game.WIDTHT-rad){
             // startar om om man nuddar sidorna
-            Game.restart();
+            startoverTimer.timerStart();
+            dead = true;
+            velocity.x = -velocity.x;
         }
+
+        // starts over if timer is 0
+        if (startoverTimer.checkTimer()) Game.restart();
 
         if (position.y > Game.HEIGHT/2)
             Game.cam.translate(0, (bestY - Game.WIDTHT/2 - Game.cam.y)*0.05f);
