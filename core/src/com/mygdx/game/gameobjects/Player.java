@@ -23,6 +23,7 @@ public class Player {
 
     // Timers
     Timer startoverTimer;
+    Timer cameraShake;
 
     boolean dead;
 
@@ -38,6 +39,8 @@ public class Player {
         grav = .25f;
 
         startoverTimer = new Timer(150, false);
+        cameraShake = new Timer (15, false);
+
         dead = false;
     }
 
@@ -74,14 +77,21 @@ public class Player {
         if (position.y < Game.cam.y+rad){
             // startar om om man nuddar botten
             startoverTimer.timerStart();
-            if (!dead) velocity.y = -velocity.y;
+            cameraShake.timerStart();
+            if (!dead) velocity.y = 3;
             dead = true;
         }
         if (position.x < rad || position.x > Game.WIDTHT-rad){
             // startar om om man nuddar sidorna
             startoverTimer.timerStart();
+            cameraShake.timerStart();
             dead = true;
             velocity.x = -velocity.x;
+        }
+
+        // shake camera if dead
+        if (dead && !cameraShake.checkTimer()){
+            Game.cam.setPosition(randomRange(-2, 2), 0);
         }
 
         // starts over if timer is 0
@@ -100,6 +110,11 @@ public class Player {
     public void draw(SpriteBatch batch){
         // målar
         spr.draw(batch);
+    }
+
+    float randomRange(float min, float max){
+        float value = (float)Math.random() * (max-min) + min;
+        return value;
     }
 
 }

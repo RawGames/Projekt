@@ -56,6 +56,4 @@ public class GameCamera {
         return vec;
     }
 
-
-
 }
