@@ -65,13 +65,11 @@ public class Game extends ApplicationAdapter {
 
 		batch.begin();
 		// Måla saker här
+
+		// målar object
 		oh.draw(batch);
 
-		for (int i = 0; i < 1000; i ++){
-			batch.draw(img, 0, i*100);
-		}
-
-		// draw score
+		// målar poäng
 		fontLayout.setText(scoreFont, Integer.toString(score));
 		fontWidth = fontLayout.width;
 		scoreFont.draw(batch, Integer.toString(score), WIDTHT/2 - fontWidth/2, HEIGHT-50+cam.y);

@@ -77,20 +77,13 @@ public class Player {
         // dör om man nuddar botten
         if (position.y < Game.cam.y+rad){
             // startar om om man nuddar botten
-            startoverTimer.timerStart();
-            cameraShake.timerStart();
-            if (!dead) velocity.y = 4;
-            dead = true;
+            die();
         }
         // Dör om man nuddar sidorna
         if (position.x < rad || position.x > Game.WIDTHT-rad){
             // startar om om man nuddar sidorna
-            startoverTimer.timerStart();
-            cameraShake.timerStart();
-            if (!dead) velocity.y = 4;
-            dead = true;
             velocity.x = -velocity.x;
-
+            die();
         }
 
         // shake camera if dead
@@ -118,6 +111,13 @@ public class Player {
     public void draw(SpriteBatch batch){
         // målar
         spr.draw(batch);
+    }
+
+    public void die(){
+        startoverTimer.timerStart();
+        cameraShake.timerStart();
+        if (!dead) velocity.y = 4;
+        dead = true;
     }
 
     float randomRange(float min, float max){
