@@ -45,6 +45,12 @@ public class GameCamera {
         cam.update();
     }
 
+    public void translate(float x, float y){
+        cam.translate(x, y);
+        this.x = cam.position.x - camWidth/2;
+        this.y = cam.position.y - camHeight/2;
+    }
+
     public Vector3 unproject(Vector3 vec){
         cam.unproject(vec);
         return vec;

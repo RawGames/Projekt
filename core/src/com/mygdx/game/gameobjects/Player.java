@@ -22,11 +22,13 @@ public class Player {
 
     float grav;
     public int rad;
+    float bestY;
 
     public void start(){
         //vectorer och andra variables
         position = new Vector2(Game.WIDTHT/2,Game.HEIGHT/3);
         velocity = new Vector2(0,0);
+        bestY = position.y;
         grav = .25f;
     }
 
@@ -57,6 +59,9 @@ public class Player {
             velocity.set((float)Math.sin(angle)*-6, (float)Math.cos(angle)*-6);
         }
 
+        // new best y
+        if (position.y > bestY) bestY = position.y;
+
         if (position.y < Game.cam.y+rad){
             // startar om om man nuddar botten
             Game.restart();
@@ -65,6 +70,9 @@ public class Player {
             // startar om om man nuddar sidorna
             Game.restart();
         }
+
+        if (position.y > Game.HEIGHT/2)
+            Game.cam.translate(0, (bestY - Game.WIDTHT/2 - Game.cam.y)*0.05f);
 
         // addera hastighet till position
         position.add(velocity);

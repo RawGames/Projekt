@@ -15,6 +15,9 @@ public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	public static GameCamera cam;
 
+	// test
+	Texture img;
+
 	// Objekt
 	static ObjectHandler oh;
 
@@ -37,6 +40,8 @@ public class Game extends ApplicationAdapter {
 
 		// objekt
 		oh = new ObjectHandler();
+
+		img = new Texture("test.png");
 	}
 
 	@Override
@@ -53,6 +58,11 @@ public class Game extends ApplicationAdapter {
 		batch.begin();
 		// Måla saker här
 		oh.draw(batch);
+
+		for (int i = 0; i < 1000; i ++){
+			batch.draw(img, 0, i*100);
+		}
+
 		batch.end();
 	}
 
@@ -66,5 +76,6 @@ public class Game extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		oh.dispose();
+		img.dispose();
 	}
 }
