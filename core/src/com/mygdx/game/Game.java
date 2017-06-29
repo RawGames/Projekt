@@ -4,6 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.gameobjects.ObjectHandler;
 import com.mygdx.game.graphics.GameCamera;
@@ -14,6 +16,9 @@ public class Game extends ApplicationAdapter {
 	// Graphics
 	SpriteBatch batch;
 	public static GameCamera cam;
+	BitmapFont scoreFont;
+	float fontWidth;
+	GlyphLayout fontLayout;
 
 	// test
 	Texture img;
@@ -32,6 +37,9 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		// sprite batch
 		batch = new SpriteBatch();
+		scoreFont = new BitmapFont();
+		fontLayout = new GlyphLayout();
+		scoreFont.setUseIntegerPositions(false);
 
 		// kamera skit
 		cam = new GameCamera(WIDTHT, HEIGHT);
@@ -63,6 +71,11 @@ public class Game extends ApplicationAdapter {
 			batch.draw(img, 0, i*100);
 		}
 
+		// draw score
+		fontLayout.setText(scoreFont, Integer.toString(score));
+		fontWidth = fontLayout.width;
+		scoreFont.draw(batch, Integer.toString(score), WIDTHT/2 - fontWidth/2, HEIGHT-50+cam.y);
+
 		batch.end();
 	}
 
@@ -70,6 +83,7 @@ public class Game extends ApplicationAdapter {
 		cam.setPosition(0, 0);
 		GameStarted = false;
 		oh.restart();
+		score = 0;
 	}
 	
 	@Override
@@ -77,5 +91,6 @@ public class Game extends ApplicationAdapter {
 		batch.dispose();
 		oh.dispose();
 		img.dispose();
+		scoreFont.dispose();
 	}
 }
