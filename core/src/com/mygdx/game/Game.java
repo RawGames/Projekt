@@ -3,7 +3,6 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,9 +18,6 @@ public class Game extends ApplicationAdapter {
 	BitmapFont scoreFont;
 	float fontWidth;
 	GlyphLayout fontLayout;
-
-	// test
-	Texture img;
 
 	// Objekt
 	static ObjectHandler oh;
@@ -48,8 +44,6 @@ public class Game extends ApplicationAdapter {
 
 		// objekt
 		oh = new ObjectHandler();
-
-		img = new Texture("test.png");
 	}
 
 	@Override
@@ -88,7 +82,6 @@ public class Game extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		oh.dispose();
-		img.dispose();
 		scoreFont.dispose();
 	}
 }
