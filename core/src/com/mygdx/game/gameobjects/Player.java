@@ -141,6 +141,7 @@ public class Player {
         spr.draw(batch);
     }
 
+    // dö
     public void die(){
         if (!dead) {
             startoverTimer.timerStart();
@@ -151,6 +152,7 @@ public class Player {
         }
     }
 
+    // random värde mellan range
     float randomRange(float min, float max){
         float value = (float)Math.random() * (max-min) + min;
         return value;

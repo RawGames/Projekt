@@ -50,15 +50,19 @@ public class ObjectHandler {
             }
         }
 
-        // uppdaterar varje hinder
-        for (Obsticle obsticle : obsticles){
-            if (isColliding(obsticle)) player.die();
-            obsticle.update();
+        // uppdaterar hinder
+        for (int i = 0; i < obsticles.size(); i ++){
+            if (isColliding(obsticles.get(i))) player.die();
+            obsticles.get(i).update();
+            if (obsticles.get(i).position.y < player.bestY - 300)
+                obsticles.remove(i);
         }
 
         // uppdaterar moln
-        for (Cloud cloud : clouds){
-            cloud.update();
+        for (int i = 0; i < clouds.size(); i++){
+            clouds.get(i).update();
+            if (clouds.get(i).position.y < player.bestY - 300)
+                clouds.remove(i);
         }
     }
 

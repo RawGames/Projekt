@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.Game;
 
 /**
  * Created by sebastianjohansson on 2017-06-30.
@@ -22,6 +23,10 @@ public class Cloud {
     }
 
     public void update(){
+
+        // move to left side if outside screen
+        if (position.x > Game.WIDTHT + 200) position.x = -200;
+
         // lägg till hastighet
         position.add(velocity);
         // ändra sprite position

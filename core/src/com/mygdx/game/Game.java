@@ -37,7 +37,7 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		// sprite batch
 		batch = new SpriteBatch();
-		scoreFont = new BitmapFont();
+		scoreFont = new BitmapFont(Gdx.files.internal("score.fnt"));
 		fontLayout = new GlyphLayout();
 		scoreFont.setUseIntegerPositions(false);
 
@@ -72,8 +72,10 @@ public class Game extends ApplicationAdapter {
 		// målar poäng
 		fontLayout.setText(scoreFont, Integer.toString(score));
 		fontWidth = fontLayout.width;
-		scoreFont.draw(batch, Integer.toString(score), WIDTHT/2 - fontWidth/2, HEIGHT-50+cam.y);
-
+		scoreFont.setColor(0, 0, 0,  1);
+		scoreFont.draw(batch, Integer.toString(score), WIDTHT/2 - fontWidth/2, HEIGHT-32+cam.y);
+		scoreFont.setColor(255 ,255 ,255 ,1);
+		scoreFont.draw(batch, Integer.toString(score), WIDTHT/2 - fontWidth/2 -1, HEIGHT-32+cam.y + 1);
 		batch.end();
 	}
 
