@@ -33,6 +33,11 @@ public class Timer {
         return false;
     }
 
+    public void setTime(int time){
+        //set the timer
+        this.time = time;
+    }
+
     // subtraherar timern och kollar om den är 0
     public boolean checkTimerContinue(){
         if (time >= 0 && timerStart) time--;

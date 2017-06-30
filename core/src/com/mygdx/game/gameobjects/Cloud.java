@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Game;
+import com.mygdx.game.utils.Timer;
 
 /**
  * Created by sebastianjohansson on 2017-06-30.
@@ -16,16 +17,25 @@ public class Cloud {
 
     Sprite spr;
 
+    Timer bounceTimer;
+
     public Cloud(float x, float y, float xVel, Texture texture){
         position = new Vector2(x, y);
-        velocity = new Vector2(xVel, 0);
+        velocity = new Vector2(xVel, .04f);
         spr = new Sprite(texture);
+
+        bounceTimer = new Timer(75, true);
     }
 
     public void update(){
 
         // move to left side if outside screen
         if (position.x > Game.WIDTHT + 200) position.x = -200;
+
+        if (bounceTimer.checkTimer()){
+            velocity.y = -velocity.y;
+            bounceTimer.setTime(75);
+        }
 
         // lägg till hastighet
         position.add(velocity);
