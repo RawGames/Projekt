@@ -1,6 +1,7 @@
 package com.mygdx.game.gameobjects;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,6 +17,9 @@ public class Player {
 
     //Sprite
     Sprite spr;
+
+    // Jump sound
+    Sound jumpSnd;
 
     // vectorer
     public Vector2 position;
@@ -40,6 +44,9 @@ public class Player {
 
         startoverTimer = new Timer(150, false);
         cameraShake = new Timer (15, false);
+
+        // Sounds
+        jumpSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/jump.wav"));
 
         dead = false;
     }
@@ -69,6 +76,9 @@ public class Player {
 
             float angle = (float)Math.atan2(touchPos.x - position.x, touchPos.y - position.y);
             velocity.set((float)Math.sin(angle)*-6, (float)Math.cos(angle)*-6);
+
+            // play sound
+            jumpSnd.play();
         }
 
         // new best y
