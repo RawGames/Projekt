@@ -40,4 +40,8 @@ public class Timer {
         return false;
     }
 
+    public boolean checkTimerStill(){
+        return time == 0;
+    }
+
 }

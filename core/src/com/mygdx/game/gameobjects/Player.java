@@ -20,6 +20,8 @@ public class Player {
 
     // Jump sound
     Sound jumpSnd;
+    Sound hitSnd;
+    Sound deathSnd;
 
     // vectorer
     public Vector2 position;
@@ -29,7 +31,7 @@ public class Player {
     Timer startoverTimer;
     Timer cameraShake;
 
-    boolean dead;
+    public boolean dead;
 
     float grav;
     public int rad;
@@ -43,10 +45,12 @@ public class Player {
         grav = .20f;
 
         startoverTimer = new Timer(150, false);
-        cameraShake = new Timer (15, false);
+        cameraShake = new Timer (20, false);
 
         // Sounds
         jumpSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/jump.wav"));
+        hitSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/hitSound.wav"));
+        deathSnd = Gdx.audio.newSound(Gdx.files.internal("sounds/deathSound.wav"));
 
         dead = false;
     }
@@ -99,6 +103,8 @@ public class Player {
         // shake camera if dead
         if (dead && !cameraShake.checkTimerContinue()){
             Game.cam.setPosition(randomRange(-3, 3), Game.cam.y);
+        } else if (dead && cameraShake.checkTimerStill()) {
+            deathSnd.play();
         }
 
         // starts over if timer is 0
@@ -124,10 +130,13 @@ public class Player {
     }
 
     public void die(){
-        startoverTimer.timerStart();
-        cameraShake.timerStart();
-        if (!dead) velocity.y = 4;
-        dead = true;
+        if (!dead) {
+            startoverTimer.timerStart();
+            cameraShake.timerStart();
+            hitSnd.play();
+            if (!dead) velocity.y = 4;
+            dead = true;
+        }
     }
 
     float randomRange(float min, float max){
