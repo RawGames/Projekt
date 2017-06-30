@@ -105,6 +105,7 @@ public class Player {
             Game.cam.setPosition(randomRange(-3, 3), Game.cam.y);
         } else if (dead && cameraShake.checkTimerStill()) {
             deathSnd.play();
+            Game.cam.setPosition(0, Game.cam.y);
         }
 
         // starts over if timer is 0

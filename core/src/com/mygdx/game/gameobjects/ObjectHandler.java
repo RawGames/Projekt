@@ -107,7 +107,7 @@ public class ObjectHandler {
         obsticles.clear();
         clouds.clear();
 
-        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), 200, .2f, cloudImg));
+        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), randomRange(200, 250), .2f, cloudImg));
 
         // resets previous score
         previousScore = 0;

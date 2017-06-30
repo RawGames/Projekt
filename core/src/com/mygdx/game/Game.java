@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,6 +22,9 @@ public class Game extends ApplicationAdapter {
 
 	// Objekt
 	static ObjectHandler oh;
+
+	// mark bild
+	Texture groundImg;
 
 	// gameplay
 	public static boolean GameStarted = false;
@@ -44,6 +48,7 @@ public class Game extends ApplicationAdapter {
 
 		// objekt
 		oh = new ObjectHandler();
+		groundImg = new Texture("ground.png");
 	}
 
 	@Override
@@ -59,6 +64,7 @@ public class Game extends ApplicationAdapter {
 
 		batch.begin();
 		// Måla saker här
+		batch.draw(groundImg, 0, -46);
 
 		// målar object
 		oh.draw(batch);
@@ -83,5 +89,6 @@ public class Game extends ApplicationAdapter {
 		batch.dispose();
 		oh.dispose();
 		scoreFont.dispose();
+		groundImg.dispose();
 	}
 }
