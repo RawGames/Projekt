@@ -23,7 +23,7 @@ public class ObjectHandler {
 
     public ObjectHandler(){
         // Textures
-        playerImg = new Texture("test.png");
+        playerImg = new Texture("player.png");
         movingPlatformImg = new Texture("movingPlatform.png");
 
         player = new Player(playerImg);
