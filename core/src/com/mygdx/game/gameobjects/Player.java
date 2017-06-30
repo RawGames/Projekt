@@ -121,6 +121,17 @@ public class Player {
         // addera hastighet till position
         position.add(velocity);
 
+        // set till att man inte dör om man nuddar marken
+        if (position.y < 106 && !dead){
+            velocity.y = 0;
+            position.y = 106;
+        }
+
+        // slöar ner x hastigheten om man nnuddar marken
+        if (position.y == 106 && !dead){
+            velocity.x = approach(velocity.x, 0, 0.08f);
+        }
+
         // fixar sprite position
         spr.setPosition(position.x - rad, position.y - rad); // subtraherar halva spriten så att x och y värden hamnar i mitten av bilden
     }
@@ -143,6 +154,30 @@ public class Player {
     float randomRange(float min, float max){
         float value = (float)Math.random() * (max-min) + min;
         return value;
+    }
+
+    // approach stuff
+    float approach(float value, float target, float speed){
+
+        if (value == target) return value;
+
+        if (value < target){
+            value += speed;
+            if (value >= target) return target;
+        } else {
+            value -= speed;
+            if (value <= target) return target;
+        }
+
+        return value;
+
+    }
+
+    public void dispose(){
+        // dispose sounds
+        deathSnd.dispose();
+        hitSnd.dispose();
+        jumpSnd.dispose();
     }
 
 }

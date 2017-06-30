@@ -45,8 +45,8 @@ public class ObjectHandler {
         if (Game.score % 5 == 0){
             if (Game.score > previousScore){
                 previousScore = Game.score;
-                obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 250, movingPlatformImg));
                 clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), player.bestY + randomRange(250, 450), randomRange(0.1f, 1), cloudImg));
+                createObsticle();
             }
         }
 
@@ -99,6 +99,26 @@ public class ObjectHandler {
         return value;
     }
 
+    int irandomRange(float min, float max){
+        return (int)(Math.random() * ((max - min) + 1));
+    }
+
+    void createObsticle(){
+
+        int chance = irandomRange(0, 1);
+
+        switch (chance){
+            case 0:
+                obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 250, movingPlatformImg));
+                break;
+            case 1:
+                obsticles.add(new StaticPlatform(8, player.bestY + 250, movingPlatformImg));
+                obsticles.add(new StaticPlatform(Game.WIDTHT-8, player.bestY + 250, movingPlatformImg));
+                break;
+        }
+
+    }
+
     public void restart(){
         // resets position
         player.start();
@@ -118,6 +138,7 @@ public class ObjectHandler {
         playerImg.dispose();
         movingPlatformImg.dispose();
         cloudImg.dispose();
+        player.dispose();
     }
 
 }
