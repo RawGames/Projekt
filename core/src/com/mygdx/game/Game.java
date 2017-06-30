@@ -54,7 +54,7 @@ public class Game extends ApplicationAdapter {
 		// Uppdatera saker här
 		oh.update();
 
-		// uppdaterar kameran
+		// uppdaterar kameran lmao
 		cam.update();
 
 		batch.begin();
