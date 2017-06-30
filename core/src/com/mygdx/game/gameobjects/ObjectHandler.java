@@ -13,11 +13,13 @@ public class ObjectHandler {
 
     // Objekt
     ArrayList<Obsticle> obsticles;
+    ArrayList<Cloud> clouds;
     Player player;
 
     // Textures
     Texture playerImg;
     Texture movingPlatformImg;
+    Texture cloudImg;
 
     int previousScore;
 
@@ -25,9 +27,14 @@ public class ObjectHandler {
         // Textures
         playerImg = new Texture("player.png");
         movingPlatformImg = new Texture("movingPlatform.png");
+        cloudImg = new Texture("cloud.png");
 
+        // objects
         player = new Player(playerImg);
         obsticles = new ArrayList<Obsticle>();
+        clouds = new ArrayList<Cloud>();
+
+        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), 200, .2f, cloudImg));
     }
 
     public void update(){
@@ -39,6 +46,7 @@ public class ObjectHandler {
             if (Game.score > previousScore){
                 previousScore = Game.score;
                 obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 250, movingPlatformImg));
+                clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), player.bestY + randomRange(250, 450), randomRange(0.1f, 1), cloudImg));
             }
         }
 
@@ -47,9 +55,20 @@ public class ObjectHandler {
             if (isColliding(obsticle)) player.die();
             obsticle.update();
         }
+
+        // uppdaterar moln
+        for (Cloud cloud : clouds){
+            cloud.update();
+        }
     }
 
     public void draw(SpriteBatch batch){
+
+        // måla moln
+        for(Cloud cloud : clouds){
+            cloud.draw(batch);
+        }
+
         // målar player ojektet
         player.draw(batch);
 
@@ -86,6 +105,9 @@ public class ObjectHandler {
 
         // delete the obsticles
         obsticles.clear();
+        clouds.clear();
+
+        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), 200, .2f, cloudImg));
 
         // resets previous score
         previousScore = 0;
@@ -95,6 +117,7 @@ public class ObjectHandler {
         // dispose things
         playerImg.dispose();
         movingPlatformImg.dispose();
+        cloudImg.dispose();
     }
 
 }

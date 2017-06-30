@@ -18,6 +18,8 @@ public class GameCamera {
     public float x;
     public float y;
 
+    public float realY;
+
     public GameCamera(int viewWidth, int viewHeight){
         cam = new OrthographicCamera(viewWidth, viewHeight);
         projection = cam.combined;
@@ -25,6 +27,8 @@ public class GameCamera {
 
         camWidth = viewWidth;
         camHeight = viewHeight;
+
+        realY = 0;
 
         setPosition(0, 0);
         cam.update();
@@ -35,6 +39,7 @@ public class GameCamera {
     public void update(){
         // uppdaterar skit
         cam.update();
+        realY = cam.position.y;
     }
 
     public void setPosition(float x, float y){
