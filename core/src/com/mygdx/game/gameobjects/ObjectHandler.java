@@ -1,7 +1,9 @@
 package com.mygdx.game.gameobjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.Game;
 
 import java.util.ArrayList;
@@ -22,6 +24,10 @@ public class ObjectHandler {
     Texture bigPlatformImg;
     Texture cloudImg;
 
+    // button Textures
+    Texture muteBtn;
+    Texture soundBtn;
+
     int previousScore;
 
     public ObjectHandler(){
@@ -30,6 +36,10 @@ public class ObjectHandler {
         smallPlatformImg = new Texture("smallPlatform.png");
         bigPlatformImg = new Texture("bigPlatform.png");
         cloudImg = new Texture("cloud.png");
+
+        // buttons
+        muteBtn = new Texture("muteBtn.png");
+        soundBtn = new Texture("soundBtn.png");
 
         // objects
         player = new Player(playerImg);
@@ -40,6 +50,19 @@ public class ObjectHandler {
     }
 
     public void update(){
+
+        player.touch = Gdx.input.justTouched();
+
+        Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+        Game.cam.unproject(touchPos);
+
+        if (touchPos.x > Game.WIDTHT - 34 && touchPos. x < Game.WIDTHT - 2){
+            if (touchPos.y > 2 && touchPos.y < 34 && player.touch){
+                Game.sound = !Game.sound;
+                player.touch = false;
+            }
+        }
+
         // uppdaterar player objektet
         player.update();
 
@@ -83,6 +106,14 @@ public class ObjectHandler {
         for (Obsticle obsticle : obsticles){
             obsticle.draw(batch);
         }
+
+        if (!Game.GameStarted){
+            if (!Game.sound)
+                batch.draw(muteBtn, Game.WIDTHT - 34, 2);
+            else
+                batch.draw(soundBtn, Game.WIDTHT - 34, 2);
+        }
+
     }
 
     // checks if player is colliding with other objects
@@ -123,10 +154,10 @@ public class ObjectHandler {
                 obsticles.add(new StaticPlatform(Game.WIDTHT-8, player.bestY + 250, smallPlatformImg));
                 break;
             case 2:
-                obsticles.add(new BigPlatform(32, player.bestY + 250, bigPlatformImg));
+                obsticles.add(new BigPlatform(16, player.bestY + 250, bigPlatformImg));
                 break;
             case 3:
-                obsticles.add(new BigPlatform(Game.WIDTHT-32, player.bestY + 250, bigPlatformImg));
+                obsticles.add(new BigPlatform(Game.WIDTHT-16, player.bestY + 250, bigPlatformImg));
                 break;
         }
 
@@ -153,6 +184,8 @@ public class ObjectHandler {
         bigPlatformImg.dispose();
         cloudImg.dispose();
         player.dispose();
+        soundBtn.dispose();
+        muteBtn.dispose();
     }
 
 }

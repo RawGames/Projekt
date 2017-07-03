@@ -27,6 +27,7 @@ public class Game extends ApplicationAdapter {
 	Texture groundImg;
 
 	// gameplay
+	public static boolean sound = true;
 	public static boolean GameStarted = false;
 	public static int score;
 

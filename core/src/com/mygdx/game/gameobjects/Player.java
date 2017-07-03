@@ -32,6 +32,7 @@ public class Player {
     Timer cameraShake;
 
     public boolean dead;
+    public boolean touch;
 
     float grav;
     public int rad;
@@ -71,7 +72,7 @@ public class Player {
         }
 
         // kollar efter touch
-        if (Gdx.input.justTouched() && !dead){
+        if (touch && !dead){
             Game.GameStarted = true;
 
             // tar position och fixar till skit med matte
@@ -82,7 +83,7 @@ public class Player {
             velocity.set((float)Math.sin(angle)*-6, (float)Math.cos(angle)*-6);
 
             // play sound
-            jumpSnd.play();
+            if (Game.sound) jumpSnd.play();
         }
 
         // new best y
@@ -104,7 +105,7 @@ public class Player {
         if (dead && !cameraShake.checkTimerContinue()){
             Game.cam.setPosition(randomRange(-3, 3), Game.cam.y);
         } else if (dead && cameraShake.checkTimerStill()) {
-            deathSnd.play();
+            if (Game.sound) deathSnd.play();
             Game.cam.setPosition(0, Game.cam.y);
         }
 
@@ -146,7 +147,7 @@ public class Player {
         if (!dead) {
             startoverTimer.timerStart();
             cameraShake.timerStart();
-            hitSnd.play();
+            if (Game.sound) hitSnd.play();
             if (!dead) velocity.y = 4;
             dead = true;
         }
