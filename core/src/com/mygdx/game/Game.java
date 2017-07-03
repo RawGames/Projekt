@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -30,9 +31,12 @@ public class Game extends ApplicationAdapter {
 	public static boolean sound = true;
 	public static boolean GameStarted = false;
 	public static int score;
+	public static int highScore;
 
 	public final static int WIDTHT = 180;
 	public final static int HEIGHT = 320;
+
+	static FileHandle saveFile;
 
 	@Override
 	public void create () {
@@ -42,6 +46,10 @@ public class Game extends ApplicationAdapter {
 		fontLayout = new GlyphLayout();
 		scoreFont.setUseIntegerPositions(false);
 
+		saveFile = Gdx.files.local("save.txt");
+		if (!saveFile.exists()) highScore = 0;
+		else highScore = Integer.parseInt(saveFile.readString());
+
 		// kamera skit
 		cam = new GameCamera(WIDTHT, HEIGHT);
 		cam.setPosition(0,0);
@@ -50,6 +58,8 @@ public class Game extends ApplicationAdapter {
 		// objekt
 		oh = new ObjectHandler();
 		groundImg = new Texture("ground.png");
+
+
 	}
 
 	@Override
@@ -71,16 +81,43 @@ public class Game extends ApplicationAdapter {
 		oh.draw(batch);
 
 		// målar poäng
-		fontLayout.setText(scoreFont, Integer.toString(score));
-		fontWidth = fontLayout.width;
-		scoreFont.setColor(0, 0, 0,  1);
-		scoreFont.draw(batch, Integer.toString(score), WIDTHT/2 - fontWidth/2, HEIGHT-32+cam.y);
-		scoreFont.setColor(255 ,255 ,255 ,1);
-		scoreFont.draw(batch, Integer.toString(score), WIDTHT/2 - fontWidth/2 -1, HEIGHT-32+cam.y + 1);
+
+		if (!GameStarted){
+
+			fontLayout.setText(scoreFont, "HIGHSCORE: " + Integer.toString(highScore));
+			fontWidth = fontLayout.width;
+			scoreFont.setColor(0, 0, 0,  1);
+			scoreFont.draw(batch, "HIGHSCORE: " + Integer.toString(highScore), WIDTHT/2 - fontWidth/2, HEIGHT-32+cam.y);
+			scoreFont.setColor(255 ,255 ,255 ,1);
+			scoreFont.draw(batch, "HIGHSCORE: " + Integer.toString(highScore), WIDTHT/2 - fontWidth/2 -1, HEIGHT-32+cam.y + 1);
+
+		} else {
+
+
+			fontLayout.setText(scoreFont, Integer.toString(score));
+			fontWidth = fontLayout.width;
+			scoreFont.setColor(0, 0, 0, 1);
+			scoreFont.draw(batch, Integer.toString(score), WIDTHT / 2 - fontWidth / 2, HEIGHT - 32 + cam.y);
+			scoreFont.setColor(255, 255, 255, 1);
+			scoreFont.draw(batch, Integer.toString(score), WIDTHT / 2 - fontWidth / 2 - 1, HEIGHT - 32 + cam.y + 1);
+
+		}
+
 		batch.end();
 	}
 
+	static void save(){
+		if (score > highScore) {
+			if (saveFile.exists()) {
+				saveFile.delete();
+			}
+			highScore = score;
+			saveFile.writeString(Integer.toString(highScore), false);
+		}
+	}
+
 	public static void restart(){
+		save();
 		cam.setPosition(0, 0);
 		GameStarted = false;
 		oh.restart();
