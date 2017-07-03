@@ -18,7 +18,8 @@ public class ObjectHandler {
 
     // Textures
     Texture playerImg;
-    Texture movingPlatformImg;
+    Texture smallPlatformImg;
+    Texture bigPlatformImg;
     Texture cloudImg;
 
     int previousScore;
@@ -26,7 +27,8 @@ public class ObjectHandler {
     public ObjectHandler(){
         // Textures
         playerImg = new Texture("player.png");
-        movingPlatformImg = new Texture("smallPlatform.png");
+        smallPlatformImg = new Texture("smallPlatform.png");
+        bigPlatformImg = new Texture("bigPlatform.png");
         cloudImg = new Texture("cloud.png");
 
         // objects
@@ -110,15 +112,21 @@ public class ObjectHandler {
 
     void createObsticle(){
 
-        int chance = irandomRange(0, 1);
+        int chance = irandomRange(0, 3);
 
         switch (chance){
             case 0:
-                obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 250, movingPlatformImg));
+                obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 250, smallPlatformImg));
                 break;
             case 1:
-                obsticles.add(new StaticPlatform(8, player.bestY + 250, movingPlatformImg));
-                obsticles.add(new StaticPlatform(Game.WIDTHT-8, player.bestY + 250, movingPlatformImg));
+                obsticles.add(new StaticPlatform(8, player.bestY + 250, smallPlatformImg));
+                obsticles.add(new StaticPlatform(Game.WIDTHT-8, player.bestY + 250, smallPlatformImg));
+                break;
+            case 2:
+                obsticles.add(new BigPlatform(-48, player.bestY + 250, bigPlatformImg));
+                break;
+            case 3:
+                obsticles.add(new BigPlatform(Game.WIDTHT-48, player.bestY + 250, bigPlatformImg));
                 break;
         }
 
@@ -141,7 +149,8 @@ public class ObjectHandler {
     public void dispose(){
         // dispose things
         playerImg.dispose();
-        movingPlatformImg.dispose();
+        smallPlatformImg.dispose();
+        bigPlatformImg.dispose();
         cloudImg.dispose();
         player.dispose();
     }
