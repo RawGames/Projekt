@@ -57,9 +57,11 @@ public class ObjectHandler {
         Game.cam.unproject(touchPos);
 
         if (touchPos.x > Game.WIDTHT - 34 && touchPos. x < Game.WIDTHT - 2){
-            if (touchPos.y > 2 && touchPos.y < 34 && player.touch){
-                Game.sound = !Game.sound;
-                player.touch = false;
+            if (touchPos.y > 2 && touchPos.y < 34 && player.touch ){
+                if (!Game.GameStarted) {
+                    Game.sound = !Game.sound;
+                    player.touch = false;
+                }
             }
         }
 
