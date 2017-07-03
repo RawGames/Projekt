@@ -26,7 +26,7 @@ public class ObjectHandler {
     public ObjectHandler(){
         // Textures
         playerImg = new Texture("player.png");
-        movingPlatformImg = new Texture("movingPlatform.png");
+        movingPlatformImg = new Texture("smallPlatform.png");
         cloudImg = new Texture("cloud.png");
 
         // objects
@@ -45,8 +45,8 @@ public class ObjectHandler {
         if (Game.score % 5 == 0){
             if (Game.score > previousScore){
                 previousScore = Game.score;
-                clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), player.bestY + randomRange(250, 400), randomRange(0.1f, 1), cloudImg));
-                clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), player.bestY + randomRange(500, 650), randomRange(0.1f, 1), cloudImg));
+                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(250, 400), randomRange(0.1f, 1), cloudImg));
+                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(500, 650), randomRange(0.1f, 1), cloudImg));
                 createObsticle();
             }
         }
