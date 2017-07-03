@@ -123,10 +123,10 @@ public class ObjectHandler {
                 obsticles.add(new StaticPlatform(Game.WIDTHT-8, player.bestY + 250, smallPlatformImg));
                 break;
             case 2:
-                obsticles.add(new BigPlatform(-48, player.bestY + 250, bigPlatformImg));
+                obsticles.add(new BigPlatform(32, player.bestY + 250, bigPlatformImg));
                 break;
             case 3:
-                obsticles.add(new BigPlatform(Game.WIDTHT-48, player.bestY + 250, bigPlatformImg));
+                obsticles.add(new BigPlatform(Game.WIDTHT-32, player.bestY + 250, bigPlatformImg));
                 break;
         }
 
