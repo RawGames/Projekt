@@ -84,6 +84,7 @@ public class Game extends ApplicationAdapter {
 
 		if (!GameStarted){
 
+			scoreFont.getData().setScale(0.75f, 0.75f);
 			fontLayout.setText(scoreFont, "HIGHSCORE: " + Integer.toString(highScore));
 			fontWidth = fontLayout.width;
 			scoreFont.setColor(0, 0, 0,  1);
@@ -93,7 +94,7 @@ public class Game extends ApplicationAdapter {
 
 		} else {
 
-
+			scoreFont.getData().setScale(1, 1);
 			fontLayout.setText(scoreFont, Integer.toString(score));
 			fontWidth = fontLayout.width;
 			scoreFont.setColor(0, 0, 0, 1);
