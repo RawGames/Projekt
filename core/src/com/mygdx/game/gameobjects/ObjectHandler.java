@@ -27,6 +27,7 @@ public class ObjectHandler {
     // button Textures
     Texture muteBtn;
     Texture soundBtn;
+    Texture twitterBtn;
 
     int previousScore;
 
@@ -40,6 +41,7 @@ public class ObjectHandler {
         // buttons
         muteBtn = new Texture("muteBtn.png");
         soundBtn = new Texture("soundBtn.png");
+        twitterBtn = new Texture("twitterBtn.png");
 
         // objects
         player = new Player(playerImg);
@@ -57,19 +59,23 @@ public class ObjectHandler {
         Game.cam.unproject(touchPos);
 
         if (touchPos.x > Game.WIDTHT - 34 && touchPos. x < Game.WIDTHT - 2){
-            if (touchPos.y > 2 && touchPos.y < 34 && player.touch ){
-                if (!Game.GameStarted) {
+            if (touchPos.y > 2 && touchPos.y < 34 ){
+                if (!Game.GameStarted && player.touch) {
                     Game.sound = !Game.sound;
                     player.touch = false;
-
-                    if (!Gdx.net.openURI("twitter://user?user_id=rawgamestweets")) { // opens app
+                }
+            }
+            if (touchPos.y > 36 && touchPos.y < 68){
+                if (!Game.GameStarted && player.touch){
+                    player.touch = false;
+                    if (!Gdx.net.openURI("https://twitter.com/rawgamestweets")) { // opens app
                         Gdx.net.openURI("https://twitter.com/rawgamestweets"); // opens site if app not installed
                     }
-
-
                 }
             }
         }
+
+
 
         // uppdaterar player objektet
         player.update();
@@ -120,6 +126,8 @@ public class ObjectHandler {
                 batch.draw(muteBtn, Game.WIDTHT - 34, 2);
             else
                 batch.draw(soundBtn, Game.WIDTHT - 34, 2);
+
+            batch.draw(twitterBtn, Game.WIDTHT - 34,36);
         }
 
     }
@@ -194,6 +202,7 @@ public class ObjectHandler {
         player.dispose();
         soundBtn.dispose();
         muteBtn.dispose();
+        twitterBtn.dispose();
     }
 
 }
