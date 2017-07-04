@@ -74,8 +74,6 @@ public class ObjectHandler {
             }
         }
 
-
-
         // uppdaterar player objektet
         player.update();
 
