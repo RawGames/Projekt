@@ -68,9 +68,8 @@ public class ObjectHandler {
             if (touchPos.y > 36 && touchPos.y < 68){
                 if (!Game.GameStarted && player.touch){
                     player.touch = false;
-                    if (!Gdx.net.openURI("https://twitter.com/rawgamestweets")) { // opens app
-                        Gdx.net.openURI("https://twitter.com/rawgamestweets"); // opens site if app not installed
-                    }
+                    if (irandomRange(1, 1000) == 1)Gdx.net.openURI("https://twitter.com/thecultofkek");
+                    else Gdx.net.openURI("https://twitter.com/rawgamestweets");
                 }
             }
         }
