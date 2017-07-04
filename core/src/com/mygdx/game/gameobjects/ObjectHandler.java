@@ -62,10 +62,8 @@ public class ObjectHandler {
                     Game.sound = !Game.sound;
                     player.touch = false;
 
-                    try {
-                        Gdx.net.openURI("twitter://user?user_id=RawGamesTweets");
-                    } catch(Exception e) {
-                        Gdx.net.openURI("https://twitter.com/RawGamesTweets");
+                    if (!Gdx.net.openURI("twitter://user?user_id=rawgamestweets")) { // opens app
+                        Gdx.net.openURI("https://twitter.com/rawgamestweets"); // opens site if app not installed
                     }
 
 
