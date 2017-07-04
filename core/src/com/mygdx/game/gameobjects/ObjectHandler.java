@@ -61,6 +61,14 @@ public class ObjectHandler {
                 if (!Game.GameStarted) {
                     Game.sound = !Game.sound;
                     player.touch = false;
+
+                    try {
+                        Gdx.net.openURI("twitter://user?user_id=RawGamesTweets");
+                    } catch(Exception e) {
+                        Gdx.net.openURI("https://twitter.com/RawGamesTweets");
+                    }
+
+
                 }
             }
         }
