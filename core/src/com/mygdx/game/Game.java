@@ -75,10 +75,13 @@ public class Game extends ApplicationAdapter {
 
 		batch.begin();
 		// Måla saker här
-		batch.draw(groundImg, 0, -46);
 
 		// målar object
 		oh.draw(batch);
+
+		batch.draw(groundImg, -3, -43);
+
+		oh.drawBtn(batch);
 
 		// målar poäng
 

@@ -118,6 +118,9 @@ public class ObjectHandler {
             obsticle.draw(batch);
         }
 
+    }
+
+    public void drawBtn(SpriteBatch batch){
         if (!Game.GameStarted){
             if (!Game.sound)
                 batch.draw(muteBtn, Game.WIDTHT - 34, 2);
@@ -126,7 +129,6 @@ public class ObjectHandler {
 
             batch.draw(twitterBtn, Game.WIDTHT - 34,36);
         }
-
     }
 
     // checks if player is colliding with other objects
