@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -20,6 +21,11 @@ public class Game extends ApplicationAdapter {
 	BitmapFont scoreFont;
 	float fontWidth;
 	GlyphLayout fontLayout;
+
+	Color c;
+
+	float alpha;
+	int alphaTarget;
 
 	// Objekt
 	static ObjectHandler oh;
@@ -55,6 +61,10 @@ public class Game extends ApplicationAdapter {
 		cam.setPosition(0,0);
 		cam.update();
 
+		c = batch.getColor();
+		alpha = 1;
+		alphaTarget = 0;
+
 		// objekt
 		oh = new ObjectHandler();
 		groundImg = new Texture("ground.png");
@@ -74,6 +84,7 @@ public class Game extends ApplicationAdapter {
 		cam.update();
 
 		batch.begin();
+		batch.setColor(c.r, c.b, c.g, 1);
 		// Måla saker här
 
 		// målar object
@@ -107,6 +118,14 @@ public class Game extends ApplicationAdapter {
 
 		}
 
+		if (alpha == alphaTarget){
+			if (alpha == 0) alphaTarget = 1;
+			else alphaTarget = 0;
+		}
+
+		alpha = approach(alpha, alphaTarget, .02f);
+		batch.setColor(c.r, c.b, c.g, alpha);
+
 		batch.end();
 	}
 
@@ -126,6 +145,23 @@ public class Game extends ApplicationAdapter {
 		GameStarted = false;
 		oh.restart();
 		score = 0;
+	}
+
+	// approach stuff
+	float approach(float value, float target, float speed){
+
+		if (value == target) return value;
+
+		if (value < target){
+			value += speed;
+			if (value >= target) return target;
+		} else {
+			value -= speed;
+			if (value <= target) return target;
+		}
+
+		return value;
+
 	}
 	
 	@Override

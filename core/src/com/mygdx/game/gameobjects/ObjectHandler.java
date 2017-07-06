@@ -22,7 +22,7 @@ public class ObjectHandler {
     Texture playerImg[];
     Texture smallPlatformImg;
     Texture bigPlatformImg;
-    Texture cloudImg;
+    Texture cloudImg[];
 
     // button Textures
     Texture muteBtn;
@@ -40,7 +40,10 @@ public class ObjectHandler {
 
         smallPlatformImg = new Texture("smallPlatform.png");
         bigPlatformImg = new Texture("bigPlatform.png");
-        cloudImg = new Texture("cloud.png");
+
+        cloudImg = new Texture[2];
+        cloudImg[0] = new Texture("cloud.png");
+        cloudImg[1] = new Texture("cloud_1.png");
 
         // buttons
         muteBtn = new Texture("muteBtn.png");
@@ -52,7 +55,7 @@ public class ObjectHandler {
         obsticles = new ArrayList<Obsticle>();
         clouds = new ArrayList<Cloud>();
 
-        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), 200, .2f, cloudImg));
+        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), 200, .2f, cloudImg[irandomRange(0, 1)]));
     }
 
     public void update(){
@@ -85,8 +88,8 @@ public class ObjectHandler {
         if (Game.score % 5 == 0){
             if (Game.score > previousScore){
                 previousScore = Game.score;
-                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(250, 400), randomRange(0.1f, 1), cloudImg));
-                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(500, 650), randomRange(0.1f, 1), cloudImg));
+                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(250, 400), randomRange(0.1f, 1), cloudImg[irandomRange(0,1)]));
+                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(500, 650), randomRange(0.1f, 1), cloudImg[irandomRange(0,1)]));
                 createObsticle();
             }
         }
@@ -190,7 +193,7 @@ public class ObjectHandler {
         obsticles.clear();
         clouds.clear();
 
-        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), randomRange(200, 250), .2f, cloudImg));
+        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), randomRange(200, 250), .2f, cloudImg[irandomRange(0,1)]));
 
         // resets previous score
         previousScore = 0;
@@ -201,7 +204,8 @@ public class ObjectHandler {
         for (Texture tex : playerImg) tex.dispose();
         smallPlatformImg.dispose();
         bigPlatformImg.dispose();
-        cloudImg.dispose();
+        cloudImg[0].dispose();
+        cloudImg[1].dispose();
         player.dispose();
         soundBtn.dispose();
         muteBtn.dispose();
