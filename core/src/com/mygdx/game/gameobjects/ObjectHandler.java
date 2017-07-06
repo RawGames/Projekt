@@ -19,7 +19,7 @@ public class ObjectHandler {
     Player player;
 
     // Textures
-    Texture playerImg;
+    Texture playerImg[];
     Texture smallPlatformImg;
     Texture bigPlatformImg;
     Texture cloudImg;
@@ -33,7 +33,11 @@ public class ObjectHandler {
 
     public ObjectHandler(){
         // Textures
-        playerImg = new Texture("player.png");
+        playerImg = new Texture[3];
+        playerImg[0] = new Texture("player_neutral.png");
+        playerImg[1] = new Texture("player.png");
+        playerImg[2] = new Texture("player_sad.png");
+
         smallPlatformImg = new Texture("smallPlatform.png");
         bigPlatformImg = new Texture("bigPlatform.png");
         cloudImg = new Texture("cloud.png");
@@ -194,7 +198,7 @@ public class ObjectHandler {
 
     public void dispose(){
         // dispose things
-        playerImg.dispose();
+        for (Texture tex : playerImg) tex.dispose();
         smallPlatformImg.dispose();
         bigPlatformImg.dispose();
         cloudImg.dispose();

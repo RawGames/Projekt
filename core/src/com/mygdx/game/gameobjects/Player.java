@@ -38,6 +38,9 @@ public class Player {
     public int rad;
     float bestY;
 
+    // player Texture
+    Texture playerTex[];
+
     public void start(){
         //vectorer och andra variables
         position = new Vector2(Game.WIDTHT/2,Game.HEIGHT/3);
@@ -56,13 +59,14 @@ public class Player {
         dead = false;
     }
 
-    public Player(Texture playerTexture){
+    public Player(Texture playerTexture[]){
         // startpositioner
         start();
         // radious
-        rad = playerTexture.getWidth()/2;
+        rad = playerTexture[0].getWidth()/2;
         // sprite
-        spr = new Sprite(playerTexture);
+        playerTex = playerTexture;
+        spr = new Sprite(playerTex[0]);
     }
 
     public void update(){
@@ -70,6 +74,14 @@ public class Player {
         if (Game.GameStarted){
             velocity.y -= grav;
         }
+
+        if (velocity.y > 0){
+            spr.setTexture(playerTex[1]);
+        } else if (velocity.y < 1) {
+            spr.setTexture(playerTex[0]);
+        }
+
+        if (dead) spr.setTexture(playerTex[2]);
 
         // kollar efter touch
         if (touch && !dead){
@@ -181,6 +193,7 @@ public class Player {
         deathSnd.dispose();
         hitSnd.dispose();
         jumpSnd.dispose();
+        for (Texture tex : playerTex) tex.dispose();
     }
 
 }
