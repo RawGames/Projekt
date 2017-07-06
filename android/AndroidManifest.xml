@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mygdx.game" >
 
-    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="25" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="25" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 
 </manifest>

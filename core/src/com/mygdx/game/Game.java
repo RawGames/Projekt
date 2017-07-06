@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.gameobjects.ObjectHandler;
 import com.mygdx.game.graphics.GameCamera;
+import com.mygdx.game.utils.AdHandler;
 
 
 public class Game extends ApplicationAdapter {
@@ -33,6 +34,10 @@ public class Game extends ApplicationAdapter {
 	// mark bild
 	Texture groundImg;
 
+	// Ad stuff
+	AdHandler handler;
+	boolean toggleAd;
+
 	// gameplay
 	public static boolean sound = true;
 	public static boolean GameStarted = false;
@@ -43,6 +48,11 @@ public class Game extends ApplicationAdapter {
 	public final static int HEIGHT = 320;
 
 	static FileHandle saveFile;
+
+	public Game(AdHandler handler){
+		this.handler = handler;
+		toggleAd = true;
+	}
 
 	@Override
 	public void create () {
@@ -79,6 +89,12 @@ public class Game extends ApplicationAdapter {
 		batch.setProjectionMatrix(cam.projection);
 		// Uppdatera saker här
 		oh.update();
+
+		// uppdaterar ads
+		if (GameStarted && toggleAd || !GameStarted && !toggleAd){
+			toggleAd = !toggleAd;
+			handler.showAds(toggleAd);
+		}
 
 		// uppdaterar kameran lmao
 		cam.update();
