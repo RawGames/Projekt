@@ -1,17 +1,23 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
+import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
+import com.mygdx.game.utils.AdHandler;
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;
 
-import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
-import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.mygdx.game.Game;
-
 public class IOSLauncher extends IOSApplication.Delegate {
+
+
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        return new IOSApplication(new Game(), config);
+        return new IOSApplication(new Game(new AdHandler() {
+            @Override
+            public void showAds(boolean show) {
+
+            }
+        }), config);
     }
 
     public static void main(String[] argv) {
