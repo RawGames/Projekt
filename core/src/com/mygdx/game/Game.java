@@ -118,9 +118,9 @@ public class Game extends ApplicationAdapter {
 			fontLayout.setText(scoreFont, "HIGHSCORE: " + Integer.toString(highScore));
 			fontWidth = fontLayout.width;
 			scoreFont.setColor(0, 0, 0,  1);
-			scoreFont.draw(batch, "HIGHSCORE: " + Integer.toString(highScore), WIDTHT/2 - fontWidth/2, HEIGHT-32+cam.y);
+			scoreFont.draw(batch, "HIGHSCORE: " + Integer.toString(highScore), WIDTHT/2 - fontWidth/2, HEIGHT-64+cam.y);
 			scoreFont.setColor(255 ,255 ,255 ,1);
-			scoreFont.draw(batch, "HIGHSCORE: " + Integer.toString(highScore), WIDTHT/2 - fontWidth/2 -1, HEIGHT-32+cam.y + 1);
+			scoreFont.draw(batch, "HIGHSCORE: " + Integer.toString(highScore), WIDTHT/2 - fontWidth/2 -1, HEIGHT-64+cam.y + 1);
 
 		} else {
 
