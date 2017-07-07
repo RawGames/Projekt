@@ -22,6 +22,7 @@ public class Game extends ApplicationAdapter {
 	BitmapFont scoreFont;
 	float fontWidth;
 	GlyphLayout fontLayout;
+	Texture tapScreen;
 
 	Color c;
 
@@ -78,6 +79,8 @@ public class Game extends ApplicationAdapter {
 		// objekt
 		oh = new ObjectHandler();
 		groundImg = new Texture("ground.png");
+
+		tapScreen = new Texture("tapScreen.png");
 
 
 	}
@@ -141,6 +144,9 @@ public class Game extends ApplicationAdapter {
 
 		alpha = approach(alpha, alphaTarget, .02f);
 		batch.setColor(c.r, c.b, c.g, alpha);
+		if (!GameStarted){
+			batch.draw(tapScreen, WIDTHT/2 - 64, 8);
+		}
 
 		batch.end();
 	}
@@ -186,5 +192,6 @@ public class Game extends ApplicationAdapter {
 		oh.dispose();
 		scoreFont.dispose();
 		groundImg.dispose();
+		tapScreen.dispose();
 	}
 }

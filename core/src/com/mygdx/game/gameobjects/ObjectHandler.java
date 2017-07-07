@@ -65,14 +65,14 @@ public class ObjectHandler {
         Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
         Game.cam.unproject(touchPos);
 
-        if (touchPos.x > Game.WIDTHT - 34 && touchPos. x < Game.WIDTHT - 2){
-            if (touchPos.y > 2 && touchPos.y < 34 ){
+        if (touchPos.y > 2 && touchPos.y < 34){
+            if (touchPos.x > 2 && touchPos.x < 34 ){
                 if (!Game.GameStarted && player.touch) {
                     Game.sound = !Game.sound;
                     player.touch = false;
                 }
             }
-            if (touchPos.y > 36 && touchPos.y < 68){
+            if (touchPos.x > Game.WIDTHT-34 && touchPos.y < Game.WIDTHT-2){
                 if (!Game.GameStarted && player.touch){
                     player.touch = false;
                     if (irandomRange(1, 10000) == 1)Gdx.net.openURI("https://twitter.com/thecultofkek");
@@ -130,11 +130,11 @@ public class ObjectHandler {
     public void drawBtn(SpriteBatch batch){
         if (!Game.GameStarted){
             if (!Game.sound)
-                batch.draw(muteBtn, Game.WIDTHT - 34, 2);
+                batch.draw(muteBtn, 2, 2);
             else
-                batch.draw(soundBtn, Game.WIDTHT - 34, 2);
+                batch.draw(soundBtn, 2, 2);
 
-            batch.draw(twitterBtn, Game.WIDTHT - 34,36);
+            batch.draw(twitterBtn, Game.WIDTHT - 34,2);
         }
     }
 
