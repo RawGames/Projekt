@@ -7,11 +7,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Sky Bouncer"
         android:theme="@style/GdxTheme" >
         <activity
             android:name="com.mygdx.game.AndroidLauncher"
-            android:label="@string/app_name" 
+            android:label="Sky Bouncer"
             android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
             <intent-filter>
