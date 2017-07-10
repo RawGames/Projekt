@@ -1,10 +1,9 @@
-package com.mygdx.game.gameobjects;
+package com.rawgames.skybouncer.gameobjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.mygdx.game.Game;
 
 import java.util.ArrayList;
 
@@ -55,7 +54,7 @@ public class ObjectHandler {
         obsticles = new ArrayList<Obsticle>();
         clouds = new ArrayList<Cloud>();
 
-        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), 200, .2f, cloudImg[irandomRange(0, 1)]));
+        clouds.add(new Cloud(randomRange(-64, com.rawgames.skybouncer.Game.WIDTHT), 200, .2f, cloudImg[irandomRange(0, 1)]));
     }
 
     public void update(){
@@ -63,17 +62,17 @@ public class ObjectHandler {
         player.touch = Gdx.input.justTouched();
 
         Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-        Game.cam.unproject(touchPos);
+        com.rawgames.skybouncer.Game.cam.unproject(touchPos);
 
         if (touchPos.y > 2 && touchPos.y < 34){
             if (touchPos.x > 2 && touchPos.x < 34 ){
-                if (!Game.GameStarted && player.touch) {
-                    Game.sound = !Game.sound;
+                if (!com.rawgames.skybouncer.Game.GameStarted && player.touch) {
+                    com.rawgames.skybouncer.Game.sound = !com.rawgames.skybouncer.Game.sound;
                     player.touch = false;
                 }
             }
-            if (touchPos.x > Game.WIDTHT-34 && touchPos.y < Game.WIDTHT-2){
-                if (!Game.GameStarted && player.touch){
+            if (touchPos.x > com.rawgames.skybouncer.Game.WIDTHT-34 && touchPos.y < com.rawgames.skybouncer.Game.WIDTHT-2){
+                if (!com.rawgames.skybouncer.Game.GameStarted && player.touch){
                     player.touch = false;
                     if (irandomRange(1, 10000) == 1)Gdx.net.openURI("https://twitter.com/thecultofkek");
                     else Gdx.net.openURI("https://twitter.com/rawgamestweets");
@@ -85,11 +84,11 @@ public class ObjectHandler {
         player.update();
 
         // create platforms
-        if (Game.score % 5 == 0){
-            if (Game.score > previousScore){
-                previousScore = Game.score;
-                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(250, 400), randomRange(0.1f, 1), cloudImg[irandomRange(0,1)]));
-                clouds.add(new Cloud(randomRange(-128, Game.WIDTHT), player.bestY + randomRange(500, 650), randomRange(0.1f, 1), cloudImg[irandomRange(0,1)]));
+        if (com.rawgames.skybouncer.Game.score % 5 == 0){
+            if (com.rawgames.skybouncer.Game.score > previousScore){
+                previousScore = com.rawgames.skybouncer.Game.score;
+                clouds.add(new Cloud(randomRange(-128, com.rawgames.skybouncer.Game.WIDTHT), player.bestY + randomRange(250, 400), randomRange(0.1f, 1), cloudImg[irandomRange(0,1)]));
+                clouds.add(new Cloud(randomRange(-128, com.rawgames.skybouncer.Game.WIDTHT), player.bestY + randomRange(500, 650), randomRange(0.1f, 1), cloudImg[irandomRange(0,1)]));
                 createObsticle();
             }
         }
@@ -128,13 +127,13 @@ public class ObjectHandler {
     }
 
     public void drawBtn(SpriteBatch batch){
-        if (!Game.GameStarted){
-            if (!Game.sound)
+        if (!com.rawgames.skybouncer.Game.GameStarted){
+            if (!com.rawgames.skybouncer.Game.sound)
                 batch.draw(muteBtn, 2, 2);
             else
                 batch.draw(soundBtn, 2, 2);
 
-            batch.draw(twitterBtn, Game.WIDTHT - 34,2);
+            batch.draw(twitterBtn, com.rawgames.skybouncer.Game.WIDTHT - 34,2);
         }
     }
 
@@ -169,17 +168,17 @@ public class ObjectHandler {
 
         switch (chance){
             case 0:
-                obsticles.add(new MovingPlatform(randomRange(0, Game.WIDTHT), player.bestY + 250, smallPlatformImg));
+                obsticles.add(new com.rawgames.skybouncer.gameobjects.MovingPlatform(randomRange(0, com.rawgames.skybouncer.Game.WIDTHT), player.bestY + 250, smallPlatformImg));
                 break;
             case 1:
                 obsticles.add(new StaticPlatform(8, player.bestY + 250, smallPlatformImg));
-                obsticles.add(new StaticPlatform(Game.WIDTHT-8, player.bestY + 250, smallPlatformImg));
+                obsticles.add(new StaticPlatform(com.rawgames.skybouncer.Game.WIDTHT-8, player.bestY + 250, smallPlatformImg));
                 break;
             case 2:
                 obsticles.add(new BigPlatform(16, player.bestY + 250, bigPlatformImg));
                 break;
             case 3:
-                obsticles.add(new BigPlatform(Game.WIDTHT-16, player.bestY + 250, bigPlatformImg));
+                obsticles.add(new BigPlatform(com.rawgames.skybouncer.Game.WIDTHT-16, player.bestY + 250, bigPlatformImg));
                 break;
         }
 
@@ -193,7 +192,7 @@ public class ObjectHandler {
         obsticles.clear();
         clouds.clear();
 
-        clouds.add(new Cloud(randomRange(-64, Game.WIDTHT), randomRange(200, 250), .2f, cloudImg[irandomRange(0,1)]));
+        clouds.add(new Cloud(randomRange(-64, com.rawgames.skybouncer.Game.WIDTHT), randomRange(200, 250), .2f, cloudImg[irandomRange(0,1)]));
 
         // resets previous score
         previousScore = 0;

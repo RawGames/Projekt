@@ -1,11 +1,10 @@
-package com.mygdx.game.gameobjects;
+package com.rawgames.skybouncer.gameobjects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.Game;
-import com.mygdx.game.utils.Timer;
+import com.rawgames.skybouncer.utils.Timer;
 
 /**
  * Created by sebastianjohansson on 2017-06-30.
@@ -30,7 +29,7 @@ public class Cloud {
     public void update(){
 
         // move to left side if outside screen
-        if (position.x > Game.WIDTHT + 200) position.x = -200;
+        if (position.x > com.rawgames.skybouncer.Game.WIDTHT + 200) position.x = -200;
 
         if (bounceTimer.checkTimer()){
             velocity.y = -velocity.y;

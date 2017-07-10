@@ -1,4 +1,4 @@
-package com.mygdx.game.graphics;
+package com.rawgames.skybouncer.graphics;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Matrix4;

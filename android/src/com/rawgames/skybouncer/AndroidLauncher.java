@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.rawgames.skybouncer;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,9 +12,9 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.mygdx.game.utils.AdHandler;
+import com.rawgames.skybouncer.utils.AdHandler;
 
-public class AndroidLauncher extends AndroidApplication implements AdHandler{
+public class AndroidLauncher extends AndroidApplication implements AdHandler {
 
 	private static final String TAG = "AndroidLauncher";
 	private final int SHOW_ADS = 1;

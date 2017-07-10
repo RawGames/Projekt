@@ -1,4 +1,4 @@
-package com.mygdx.game.utils;
+package com.rawgames.skybouncer.utils;
 
 /**
  * Created by sebbe on 2017-07-06.

@@ -1,8 +1,8 @@
-package com.mygdx.game;
+package com.rawgames.skybouncer;
 
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.mygdx.game.utils.AdHandler;
+import com.rawgames.skybouncer.utils.AdHandler;
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;
 

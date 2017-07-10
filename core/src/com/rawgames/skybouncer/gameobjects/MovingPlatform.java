@@ -1,10 +1,9 @@
-package com.mygdx.game.gameobjects;
+package com.rawgames.skybouncer.gameobjects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.Game;
 
 /**
  * Created by sebbe on 2017-06-29.
@@ -20,14 +19,14 @@ public class MovingPlatform extends Obsticle{
         velocity = new Vector2(0 , 0);
 
         spr = new Sprite(texture);
-        target = Game.WIDTHT * (int)(Math.random()*2);
+        target = com.rawgames.skybouncer.Game.WIDTHT * (int)(Math.random()*2);
     }
 
     public void update(){
 
         // change direction
         if (position.x == target){
-            target = (target == 0) ? (target = Game.WIDTHT) : (target = 0);
+            target = (target == 0) ? (target = com.rawgames.skybouncer.Game.WIDTHT) : (target = 0);
         }
 
         // go towards target

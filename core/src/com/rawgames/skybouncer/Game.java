@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.rawgames.skybouncer;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -9,16 +9,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.mygdx.game.gameobjects.ObjectHandler;
-import com.mygdx.game.graphics.GameCamera;
-import com.mygdx.game.utils.AdHandler;
+import com.rawgames.skybouncer.gameobjects.ObjectHandler;
+import com.rawgames.skybouncer.utils.AdHandler;
 
 
 public class Game extends ApplicationAdapter {
 
 	// Graphics
 	SpriteBatch batch;
-	public static GameCamera cam;
+	public static com.rawgames.skybouncer.graphics.GameCamera cam;
 	BitmapFont scoreFont;
 	float fontWidth;
 	GlyphLayout fontLayout;
@@ -68,7 +67,7 @@ public class Game extends ApplicationAdapter {
 		else highScore = Integer.parseInt(saveFile.readString());
 
 		// kamera skit
-		cam = new GameCamera(WIDTHT, HEIGHT);
+		cam = new com.rawgames.skybouncer.graphics.GameCamera(WIDTHT, HEIGHT);
 		cam.setPosition(0,0);
 		cam.update();
 

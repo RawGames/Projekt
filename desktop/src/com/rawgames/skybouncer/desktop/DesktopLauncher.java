@@ -1,9 +1,9 @@
-package com.mygdx.game.desktop;
+package com.rawgames.skybouncer.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.mygdx.game.Game;
-import com.mygdx.game.utils.AdHandler;
+import com.rawgames.skybouncer.Game;
+import com.rawgames.skybouncer.utils.AdHandler;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

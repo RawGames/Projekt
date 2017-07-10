@@ -1,4 +1,4 @@
-package com.mygdx.game.gameobjects;
+package com.rawgames.skybouncer.gameobjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
@@ -7,8 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.mygdx.game.Game;
-import com.mygdx.game.utils.Timer;
+import com.rawgames.skybouncer.utils.Timer;
 
 /**
  * Created by sebbe on 2017-06-28.
@@ -43,7 +42,7 @@ public class Player {
 
     public void start(){
         //vectorer och andra variables
-        position = new Vector2(Game.WIDTHT/2,Game.HEIGHT/3);
+        position = new Vector2(com.rawgames.skybouncer.Game.WIDTHT/2, com.rawgames.skybouncer.Game.HEIGHT/3);
         velocity = new Vector2(0,0);
         bestY = position.y;
         grav = .20f;
@@ -71,7 +70,7 @@ public class Player {
 
     public void update(){
         // gravity
-        if (Game.GameStarted){
+        if (com.rawgames.skybouncer.Game.GameStarted){
             velocity.y -= grav;
         }
 
@@ -85,29 +84,29 @@ public class Player {
 
         // kollar efter touch
         if (touch && !dead){
-            Game.GameStarted = true;
+            com.rawgames.skybouncer.Game.GameStarted = true;
 
             // tar position och fixar till skit med matte
             Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
-            Game.cam.unproject(touchPos);
+            com.rawgames.skybouncer.Game.cam.unproject(touchPos);
 
             float angle = (float)Math.atan2(touchPos.x - position.x, touchPos.y - position.y);
             velocity.set((float)Math.sin(angle)*-6, (float)Math.cos(angle)*-6);
 
             // play sound
-            if (Game.sound) jumpSnd.play();
+            if (com.rawgames.skybouncer.Game.sound) jumpSnd.play();
         }
 
         // new best y
         if (position.y > bestY && !dead) bestY = position.y;
 
         // dör om man nuddar botten
-        if (position.y < Game.cam.y+rad){
+        if (position.y < com.rawgames.skybouncer.Game.cam.y+rad){
             // startar om om man nuddar botten
             die();
         }
         // Dör om man nuddar sidorna
-        if (position.x < rad || position.x > Game.WIDTHT-rad){
+        if (position.x < rad || position.x > com.rawgames.skybouncer.Game.WIDTHT-rad){
             // startar om om man nuddar sidorna
             velocity.x = -velocity.x;
             die();
@@ -115,21 +114,21 @@ public class Player {
 
         // shake camera if dead
         if (dead && !cameraShake.checkTimerContinue()){
-            Game.cam.setPosition(randomRange(-3, 3), Game.cam.y);
+            com.rawgames.skybouncer.Game.cam.setPosition(randomRange(-3, 3), com.rawgames.skybouncer.Game.cam.y);
         } else if (dead && cameraShake.checkTimerStill()) {
-            if (Game.sound) deathSnd.play();
-            Game.cam.setPosition(0, Game.cam.y);
+            if (com.rawgames.skybouncer.Game.sound) deathSnd.play();
+            com.rawgames.skybouncer.Game.cam.setPosition(0, com.rawgames.skybouncer.Game.cam.y);
         }
 
         // starts over if timer is 0
-        if (startoverTimer.checkTimer()) Game.restart();
+        if (startoverTimer.checkTimer()) com.rawgames.skybouncer.Game.restart();
 
         // flyttar kameran om positionen är över halva skärmen
-        if (position.y > Game.HEIGHT/2)
-            Game.cam.translate(0, (bestY - Game.WIDTHT/2 - Game.cam.y)*0.05f);
+        if (position.y > com.rawgames.skybouncer.Game.HEIGHT/2)
+            com.rawgames.skybouncer.Game.cam.translate(0, (bestY - com.rawgames.skybouncer.Game.WIDTHT/2 - com.rawgames.skybouncer.Game.cam.y)*0.05f);
 
         // uppdaterar poängen
-        Game.score = (int)((bestY - Game.HEIGHT/3)/100);
+        com.rawgames.skybouncer.Game.score = (int)((bestY - com.rawgames.skybouncer.Game.HEIGHT/3)/100);
 
         // addera hastighet till position
         position.add(velocity);
@@ -159,7 +158,7 @@ public class Player {
         if (!dead) {
             startoverTimer.timerStart();
             cameraShake.timerStart();
-            if (Game.sound) hitSnd.play();
+            if (com.rawgames.skybouncer.Game.sound) hitSnd.play();
             if (!dead) velocity.y = 4;
             dead = true;
         }

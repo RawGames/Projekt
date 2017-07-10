@@ -1,15 +1,14 @@
-package com.mygdx.game.gameobjects;
+package com.rawgames.skybouncer.gameobjects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.Game;
 
 /**
  * Created by sebbe on 2017-06-30.
  */
-public class StaticPlatform extends Obsticle{
+public class StaticPlatform extends Obsticle {
 
     Sprite spr;
     int target;
@@ -20,7 +19,7 @@ public class StaticPlatform extends Obsticle{
         velocity = new Vector2(0 , 0);
 
         spr = new Sprite(texture);
-        target = Game.WIDTHT * (int)(Math.random()*2);
+        target = com.rawgames.skybouncer.Game.WIDTHT * (int)(Math.random()*2);
     }
 
     public void update(){
