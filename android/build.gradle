@@ -18,7 +18,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.mygdx.game"
+        applicationId "com.rawgames.skybouncer"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
