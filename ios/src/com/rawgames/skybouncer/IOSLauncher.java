@@ -9,6 +9,7 @@ import org.robovm.apple.uikit.UIApplication;
 public class IOSLauncher extends IOSApplication.Delegate {
 
 
+
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
