@@ -5,6 +5,7 @@ sourceCompatibility = '1.7'
 
 ext {
 	mainClassName = "IOSLauncher"
+
 }
 
 launchIPhoneSimulator.dependsOn build
