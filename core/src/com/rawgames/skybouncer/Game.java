@@ -111,6 +111,8 @@ public class Game extends ApplicationAdapter {
 		if (GameStarted && toggleAd || !GameStarted && !toggleAd){
 			toggleAd = !toggleAd;
 			handler.showAds(toggleAd);
+
+			listenerManager.call(ListenerManager.ListenerType.SHOWAD);
 		}
 
 		// uppdaterar kameran lmao

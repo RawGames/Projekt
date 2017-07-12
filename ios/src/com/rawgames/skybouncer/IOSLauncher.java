@@ -109,7 +109,7 @@ public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
             // loggar
             Foundation.log("Initializing ads...");
 
-            adsInitialized = true;
+            adsInitialized = false;
 
             // lägger in reklam viewen eller något
             adview = new GADBannerView(GADAdSize.SmartBannerPortrait());
