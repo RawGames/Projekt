@@ -68,9 +68,9 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86"
-        compile 'com.android.support:appcompat-v7:25.3.1'
-        compile 'com.android.support:support-v4:25.3.1'
-        compile 'com.google.android.gms:play-services:11.0.2'
+        compile "com.android.support:appcompat-v7:25.3.1"
+        compile "com.android.support:support-v4:25.3.1"
+        compile "com.google.android.gms:play-services:11.0.2"
     }
 }
 
