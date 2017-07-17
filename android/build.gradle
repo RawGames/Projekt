@@ -23,6 +23,11 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
+    }
+    dependencies {
+        compile 'com.android.support:multidex:1.0.0'
     }
     buildTypes {
         release {

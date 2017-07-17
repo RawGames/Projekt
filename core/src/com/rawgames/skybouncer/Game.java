@@ -96,6 +96,7 @@ public class Game extends ApplicationAdapter {
 
 		tapScreen = new Texture("tapScreen.png");
 
+		handler.signIn();
 
 	}
 
