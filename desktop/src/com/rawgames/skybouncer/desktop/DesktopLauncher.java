@@ -13,6 +13,31 @@ public class DesktopLauncher {
 			public void showAds(boolean show) {
 
 			}
+
+			@Override
+			public void signIn() {
+
+			}
+
+			@Override
+			public void signOut() {
+
+			}
+
+			@Override
+			public void submitScore(int highScore) {
+
+			}
+
+			@Override
+			public void showScore() {
+
+			}
+
+			@Override
+			public boolean isSignedIn() {
+				return false;
+			}
 		}), config);
 
 		config.height = Game.HEIGHT;
