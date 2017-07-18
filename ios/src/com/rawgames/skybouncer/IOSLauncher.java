@@ -158,4 +158,29 @@ public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
     public void showAds(boolean show) {
 
     }
+
+    @Override
+    public void signIn() {
+
+    }
+
+    @Override
+    public void signOut() {
+
+    }
+
+    @Override
+    public void submitScore(int highScore) {
+
+    }
+
+    @Override
+    public void showScore() {
+
+    }
+
+    @Override
+    public boolean isSignedIn() {
+        return false;
+    }
 }
