@@ -11,8 +11,6 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.rawgames.skybouncer.gameobjects.ObjectHandler;
 import com.rawgames.skybouncer.utils.AdHandler;
-import com.rawgames.skybouncer.utils.Listener;
-import com.rawgames.skybouncer.utils.ListenerManager;
 
 
 public class Game extends ApplicationAdapter {
@@ -51,8 +49,6 @@ public class Game extends ApplicationAdapter {
 
 	static FileHandle saveFile;
 
-	// reklam för ios
-	public static ListenerManager listenerManager;
 
 	public Game(AdHandler handler){
 		// android reklam
@@ -61,13 +57,9 @@ public class Game extends ApplicationAdapter {
 		handler.showAds(true);
 
 		// ios reklam
-		listenerManager = new ListenerManager();
 
 	}
 
-	public void addListener(Listener l){
-		listenerManager.add(l);
-	}
 
 	@Override
 	public void create () {
@@ -113,7 +105,7 @@ public class Game extends ApplicationAdapter {
 			toggleAd = !toggleAd;
 			handler.showAds(toggleAd);
 
-			listenerManager.call(ListenerManager.ListenerType.SHOWAD);
+
 		}
 
 		// uppdaterar kameran lmao
