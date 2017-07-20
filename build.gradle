@@ -24,7 +24,7 @@ allprojects {
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
         admobVersion = '11.0.0'
-        robopodsVersion = "1.14.0"
+        robopodsVersion = "1.8.0"
     }
 
     repositories {
@@ -81,6 +81,7 @@ project(":ios") {
 
     dependencies {
         compile project(":core")
+        compile project(":mopub")
         compile "com.mobidevelop.robovm:robovm-rt:$roboVMVersion"
         compile "com.mobidevelop.robovm:robovm-cocoatouch:$roboVMVersion"
         compile "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"

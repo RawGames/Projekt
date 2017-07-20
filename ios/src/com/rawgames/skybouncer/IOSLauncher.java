@@ -10,12 +10,18 @@ import org.robovm.apple.uikit.UIApplication;
 import org.robovm.apple.uikit.UIScreen;
 import org.robovm.pods.google.mobileads.GADAdSize;
 import org.robovm.pods.google.mobileads.GADBannerView;
+import org.robovm.pods.google.mobileads.GADInterstitial;
 import org.robovm.pods.google.mobileads.GADRequest;
+
+import java.util.Arrays;
 
 public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
 
     private boolean adsInitialized = false;
     GADBannerView banner;
+
+    GADInterstitial interstitial;
+
     private IOSApplication iosApp;
 
     @Override
@@ -65,8 +71,27 @@ public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
         banner.setFrame(new CGRect(screenWidth / 2 - adWidth / 2, screenHeight - bannerHeight, bannerWidth, bannerHeight));
     }
 
+    public void showInterstitial(){
+
+        interstitial = new GADInterstitial("ca-app-pub-7220882176968020/1095944394");
+
+        GADRequest request = new GADRequest();
+        request.setTestDevices(Arrays.asList(GADRequest.getSimulatorID()));
+
+        interstitial.loadRequest(request);
+        interstitial.present(iosApp.getUIViewController());
+
+        if (interstitial.isReady()){
+            interstitial.present(iosApp.getUIViewController());
+        } else {
+            interstitial.loadRequest(request);
+        }
+
+    }
+
     public void initBanner(){
         if (!adsInitialized){
+            System.out.println("initializing...");
             adsInitialized = true;
             banner = new GADBannerView();
             banner.setAdUnitID("ca-app-pub-3940256099942544/6300978111");
@@ -77,7 +102,7 @@ public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
 
     @Override
     public void showAds(boolean show) {
-
+        //showInterstitial();
     }
 
     @Override
