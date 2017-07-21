@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "39128449794",
+    "project_id": "sky-bouncer-40397881"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39128449794:android:298a747aca76f162",
+        "android_client_info": {
+          "package_name": "com.rawgames.skybouncer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39128449794-9ijm3ohpmp1mevmjt3v2e428h9d0aqd3.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "39128449794-6dsn1e1b3nphhkb7m2gmpgltctgn01hv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rawgames.skybouncer",
+            "certificate_hash": "9564e7e278aab64535afa32c6603c1679a7dde3b"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCA8_TTCXwIVrzbRoXd9NdLHksl0M-Bs0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

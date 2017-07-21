@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Sky Bouncer</string>
+    Games.Leaderboards.submitScore(mGoogleApiClient, LEADERBOARD_ID, 1337);
 
 
 </resources>

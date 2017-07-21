@@ -15,6 +15,9 @@ import com.rawgames.skybouncer.utils.AdHandler;
 
 public class Game extends ApplicationAdapter {
 
+
+
+
 	// Graphics
 	SpriteBatch batch;
 	public static com.rawgames.skybouncer.graphics.GameCamera cam;
@@ -88,7 +91,7 @@ public class Game extends ApplicationAdapter {
 
 		tapScreen = new Texture("tapScreen.png");
 
-		//handler.signIn();
+	//	handler.showScore();
 
 	}
 
