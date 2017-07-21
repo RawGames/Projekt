@@ -107,9 +107,9 @@ public class Game extends ApplicationAdapter {
 		if (GameStarted && toggleAd || !GameStarted && !toggleAd){
 			toggleAd = !toggleAd;
 			handler.showAds(toggleAd);
-
-
 		}
+
+		if (Gdx.input.justTouched()) handler.showScore();
 
 		// uppdaterar kameran lmao
 		cam.update();

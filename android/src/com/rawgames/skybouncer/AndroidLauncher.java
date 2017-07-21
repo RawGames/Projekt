@@ -31,7 +31,7 @@ import com.google.example.games.basegameutils.GameHelper;
 import com.rawgames.skybouncer.utils.AdHandler;
 
 
-public class AndroidLauncher extends AndroidApplication implements AdHandler, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback,DialogInterface, Window.Callback, KeyEvent.Callback, View.OnCreateContextMenuListener {//, GoogleApiClient.ServerAuthCodeCallbacks {
+public class AndroidLauncher extends AndroidApplication implements AdHandler, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback,DialogInterface, Window.Callback, KeyEvent.Callback, View.OnCreateContextMenuListener, GameHelper.GameHelperListener {//, GoogleApiClient.ServerAuthCodeCallbacks {
 
 	private GoogleApiClient myClient;
 
@@ -44,6 +44,10 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 	private static final int REQUEST_RESOLVE_ERROR = 1001;
 	private ProgressDialog mProgressDialog;
 	private static final String DIALOG_ERROR = "dialog_error";
+
+	private int REQUEST_LEADERBOARD = 100;
+
+	private final String LEADERBOARD_ID = "CgkIgobz4ZEBEAIQAQ";
 
 	public Dialog showErrorDialog(int errorCode) {
 		return null;
@@ -127,9 +131,6 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 				.build();
 		mResolvingError = savedInstanceState != null
 				&& savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
-/*		myClient = new GoogleApiClient.Builder(this).addOnConnectionFailedListener(this)
-				.addApi(Plus.API, Plus.PlusOptions.builder().build())
-				.addScope(Plus.SCOPE_PLUS_LOGIN).build();*/
 
 
 
@@ -252,16 +253,8 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 
 	@Override
 	public void showScore() {
-		if (isSignedIn() == true)
-		{
-
-			startActivityForResult(Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(),
-					getString(R.string.leaderboard_high_score)), requestCode);
-		}
-		else
-		{
-			signIn();
-		}
+		startActivityForResult(Games.Leaderboards.getLeaderboardIntent(myClient,
+				LEADERBOARD_ID), REQUEST_LEADERBOARD );
 	}
 
 	@Override
@@ -305,6 +298,16 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 
 	@Override
 	public void dismiss() {
+
+	}
+
+	@Override
+	public void onSignInFailed() {
+
+	}
+
+	@Override
+	public void onSignInSucceeded() {
 
 	}
 }
