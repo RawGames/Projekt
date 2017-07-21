@@ -3,19 +3,8 @@ package org.robovm.bindings.mopub.sample;
 
 import org.robovm.apple.coregraphics.CGRect;
 import org.robovm.apple.foundation.NSAutoreleasePool;
-import org.robovm.apple.uikit.UIApplication;
-import org.robovm.apple.uikit.UIApplicationDelegateAdapter;
-import org.robovm.apple.uikit.UIColor;
-import org.robovm.apple.uikit.UIScreen;
-import org.robovm.apple.uikit.UIViewController;
-import org.robovm.apple.uikit.UIWindow;
-import org.robovm.bindings.mopub.MPAdView;
-import org.robovm.bindings.mopub.MPAdViewDelegate;
-import org.robovm.bindings.mopub.MPAdViewDelegateAdapter;
-import org.robovm.bindings.mopub.MPConstants;
-import org.robovm.bindings.mopub.MPInterstitialAdController;
-import org.robovm.bindings.mopub.MPInterstitialAdControllerDelegate;
-import org.robovm.bindings.mopub.MPInterstitialAdControllerDelegateAdapter;
+import org.robovm.apple.uikit.*;
+import org.robovm.bindings.mopub.*;
 
 /** Basic usage of banners and interstitials. */
 public class Sample extends UIApplicationDelegateAdapter {

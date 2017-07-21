@@ -63,6 +63,6 @@
         <framework>CoreMotion</framework>
         <framework>CoreBluetooth</framework>
         <framework>SystemConfiguration</framework>
-        <framework>GoogleMobileAds</framework>
     </frameworks>
+
 </config>
