@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'SkyBouncerDebugkey'
             keyPassword '123xd123'
-            storeFile file('C:/a/nycklar.jks')
+            storeFile file('nycklar.jks')
             storePassword '123xd123'
         }
     }
