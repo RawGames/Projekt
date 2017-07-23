@@ -53,6 +53,8 @@ public class Game extends ApplicationAdapter {
 	static FileHandle saveFile;
 
 
+
+
 	public Game(AdHandler handler){
 		// android reklam
 		this.handler = handler;
