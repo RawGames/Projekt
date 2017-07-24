@@ -31,9 +31,19 @@ import com.google.example.games.basegameutils.GameHelper;
 import com.rawgames.skybouncer.utils.AdHandler;
 
 
-public class AndroidLauncher extends AndroidApplication implements AdHandler, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback,DialogInterface, Window.Callback, KeyEvent.Callback, View.OnCreateContextMenuListener, GameHelper.GameHelperListener {//, GoogleApiClient.ServerAuthCodeCallbacks {
+public class AndroidLauncher extends AndroidApplication implements AdHandler{ //, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ActivityCompat.OnRequestPermissionsResultCallback,DialogInterface, Window.Callback, KeyEvent.Callback, View.OnCreateContextMenuListener, GameHelper.GameHelperListener {
 
 	private GoogleApiClient myClient;
+
+
+	/*public interface PlayServices
+	{
+		void signIn();
+		void signOut();
+		void submitScore(int highScore);
+		void showScore();
+		boolean isSignedIn();
+	}*/
 
 
 	private static final String TAG = "AndroidLauncher";
@@ -78,7 +88,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putBoolean(STATE_RESOLVING_ERROR, mResolvingError);
+	//	outState.putBoolean(STATE_RESOLVING_ERROR, mResolvingError);
 	}
 
 
@@ -86,15 +96,15 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 	protected void onStart() {
 		super.onStart();
 
-		gameHelper.onStart(this);
-		myClient.connect();
+	//	gameHelper.onStart(this);
+	//	myClient.connect();
 
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		myClient.disconnect();
+	//	myClient.disconnect();
 		gameHelper.onStop();
 	}
 
@@ -102,7 +112,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		gameHelper.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == REQUEST_RESOLVE_ERROR) {
+	/*	if (requestCode == REQUEST_RESOLVE_ERROR) {
 			mResolvingError = false;
 			if (resultCode == RESULT_OK) {
 				if (!myClient.isConnecting() &&
@@ -110,7 +120,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 					myClient.connect();
 				}
 			}
-		}
+		}*/
 
 	}
 
@@ -120,7 +130,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 		super.onCreate(savedInstanceState);
 
 
-		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+		/*	GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 				.requestEmail()
 				.build();
 		myClient = new GoogleApiClient.Builder(this)
@@ -132,10 +142,11 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 		mResolvingError = savedInstanceState != null
 				&& savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
 
-
+*/
 
 		gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
 		gameHelper.enableDebugLog(false);
+
 
 		GameHelper.GameHelperListener gameHelperListener = new GameHelper.GameHelperListener()
 		{
@@ -214,13 +225,13 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 		}
 		catch (Exception e)
 		{
-			Gdx.app.log("MainActivity", "Log in failed: " + e.getMessage() + ".");
+		//	Gdx.app.log("MainActivity", "Log in failed: " + e.getMessage() + ".");
 		}
 	}
 
 	@Override
 	public void signOut() {
-		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+	/*	GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 				.requestEmail()
 				.build();
 		try
@@ -237,24 +248,24 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 		catch (Exception e)
 		{
 			Gdx.app.log("MainActivity", "Log out failed: " + e.getMessage() + ".");
-		}
+		} */
 
 	}
 
 	@Override
 	public void submitScore(int highScore) {
-		if (isSignedIn() == true)
+	/*	if (isSignedIn() == true)
 		{
 			Games.Leaderboards.submitScore(gameHelper.getApiClient(),
 					getString(R.string.leaderboard_high_score), highScore);
-		}
+		}*/
 	}
 
 
 	@Override
 	public void showScore() {
-		startActivityForResult(Games.Leaderboards.getLeaderboardIntent(myClient,
-				LEADERBOARD_ID), REQUEST_LEADERBOARD );
+	/*	startActivityForResult(Games.Leaderboards.getLeaderboardIntent(myClient,
+				LEADERBOARD_ID), REQUEST_LEADERBOARD );*/
 	}
 
 	@Override
@@ -262,7 +273,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 		return gameHelper.isSignedIn();
 	}
 
-	@Override
+/*	@Override
 	public void onConnected(@Nullable Bundle bundle) {
 
 	}
@@ -309,5 +320,5 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 	@Override
 	public void onSignInSucceeded() {
 
-	}
+	}*/
 }
