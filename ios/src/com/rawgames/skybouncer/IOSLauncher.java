@@ -3,19 +3,13 @@ package com.rawgames.skybouncer;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
 import com.rawgames.skybouncer.utils.AdHandler;
-import org.robovm.apple.coregraphics.CGRect;
-import org.robovm.apple.coregraphics.CGSize;
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;
-import org.robovm.apple.uikit.UIScreen;
-import org.robovm.pods.google.mobileads.GADAdSize;
-import org.robovm.pods.google.mobileads.GADBannerView;
-import org.robovm.pods.google.mobileads.GADRequest;
 
 public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
 
     private boolean adsInitialized = false;
-    GADBannerView banner;
+
     private IOSApplication iosApp;
 
     @Override
@@ -41,43 +35,15 @@ public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
         pool.close();
     }
 
-    public void showBanner(){
-        initBanner();
 
-        banner.setRootViewController(iosApp.getUIViewController());
-
-        iosApp.getUIViewController().getView().addSubview(banner);
-
-        GADRequest request = new GADRequest();
-        banner.loadRequest(request);
-
-        CGSize screenSize = UIScreen.getMainScreen().getBounds().getSize();
-        double screenWidth = screenSize.getWidth();
-        double screenHeight = screenSize.getHeight();
-
-        CGSize adSize = banner.getBounds().getSize();
-        double adHeight = adSize.getHeight();
-        double adWidth = adSize.getWidth();
-
-        float bannerWidth = (float) screenWidth;
-        float bannerHeight = (float) (bannerWidth / adWidth * adHeight);
-
-        banner.setFrame(new CGRect(screenWidth / 2 - adWidth / 2, screenHeight - bannerHeight, bannerWidth, bannerHeight));
+    public void showDick(){
+        System.out.println("AOAOAOAOAO");
     }
 
-    public void initBanner(){
-        if (!adsInitialized){
-            adsInitialized = true;
-            banner = new GADBannerView();
-            banner.setAdUnitID("ca-app-pub-3940256099942544/6300978111");
-            banner.setAdSize(GADAdSize.Banner());
-
-        }
-    }
 
     @Override
     public void showAds(boolean show) {
-
+        showDick();
     }
 
     @Override

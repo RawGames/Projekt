@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.rawgames.skybouncer.Game;
 
 import java.util.ArrayList;
 
@@ -158,13 +159,20 @@ public class ObjectHandler {
         return value;
     }
 
-    int irandomRange(float min, float max){
-        return (int)(Math.random() * ((max - min) + 1));
+    int irandomRange(int min, int max){
+        // so random lmao
+        return (int) (Math.random() * (max - min + 1)) + min;
     }
 
     void createObsticle(){
 
-        int chance = irandomRange(0, 3);
+        // Ay lmao
+        int chance;
+        if (Game.score < 50) {
+            chance = irandomRange(1, 3);
+        } else {
+            chance = irandomRange(0,3);
+        }
 
         switch (chance){
             case 0:

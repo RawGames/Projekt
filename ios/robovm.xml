@@ -35,6 +35,11 @@
     <libs>
         <lib>z</lib>
     </libs>
+
+    <frameworkPaths>
+        <path>build/libs</path>
+    </frameworkPaths>
+
     <frameworks>
       <framework>UIKit</framework>
       <framework>OpenGLES</framework>
@@ -43,5 +48,21 @@
       <framework>OpenAL</framework>
       <framework>AudioToolbox</framework>
       <framework>AVFoundation</framework>
+        <framework>AdSupport</framework>
+        <framework>CoreMedia</framework>
+        <framework>CoreTelephony</framework>
+        <framework>EventKit</framework>
+        <framework>EventKitUI</framework>
+        <framework>MediaPlayer</framework>
+        <framework>MessageUI</framework>
+        <framework>StoreKit</framework>
+        <framework>GLKit</framework>
+        <framework>SafariServices</framework>
+        <framework>CoreVideo</framework>
+        <framework>CoreData</framework>
+        <framework>CoreMotion</framework>
+        <framework>CoreBluetooth</framework>
+        <framework>SystemConfiguration</framework>
     </frameworks>
+
 </config>

@@ -15,6 +15,9 @@ import com.rawgames.skybouncer.utils.AdHandler;
 
 public class Game extends ApplicationAdapter {
 
+
+
+
 	// Graphics
 	SpriteBatch batch;
 	public static com.rawgames.skybouncer.graphics.GameCamera cam;
@@ -48,6 +51,8 @@ public class Game extends ApplicationAdapter {
 	public final static int HEIGHT = 320;
 
 	static FileHandle saveFile;
+
+
 
 
 	public Game(AdHandler handler){
@@ -88,7 +93,7 @@ public class Game extends ApplicationAdapter {
 
 		tapScreen = new Texture("tapScreen.png");
 
-		//handler.signIn();
+	//	handler.showScore();
 
 	}
 
@@ -104,8 +109,6 @@ public class Game extends ApplicationAdapter {
 		if (GameStarted && toggleAd || !GameStarted && !toggleAd){
 			toggleAd = !toggleAd;
 			handler.showAds(toggleAd);
-
-
 		}
 
 		// uppdaterar kameran lmao
