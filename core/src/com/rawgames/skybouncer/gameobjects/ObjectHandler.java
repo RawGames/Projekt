@@ -165,6 +165,7 @@ public class ObjectHandler {
 
     void createObsticle(){
 
+        // Ay lmao
         int chance;
         if (Game.score >= 50) {
             chance = irandomRange(0, 3);
