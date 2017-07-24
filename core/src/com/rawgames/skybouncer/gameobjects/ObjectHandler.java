@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.rawgames.skybouncer.Game;
 
 import java.util.ArrayList;
 
@@ -164,7 +165,12 @@ public class ObjectHandler {
 
     void createObsticle(){
 
-        int chance = irandomRange(0, 3);
+        int chance;
+        if (Game.score >= 50) {
+            chance = irandomRange(0, 3);
+        } else {
+            chance = irandomRange(1,3);
+        }
 
         switch (chance){
             case 0:

@@ -86,7 +86,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler, Go
 	protected void onStart() {
 		super.onStart();
 
-//		gameHelper.onStart(this);
+		gameHelper.onStart(this);
 		myClient.connect();
 
 	}

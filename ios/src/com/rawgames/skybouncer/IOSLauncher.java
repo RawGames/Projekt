@@ -10,8 +10,6 @@ public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
 
     private boolean adsInitialized = false;
 
-
-
     private IOSApplication iosApp;
 
     @Override
