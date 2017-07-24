@@ -159,8 +159,9 @@ public class ObjectHandler {
         return value;
     }
 
-    int irandomRange(float min, float max){
-        return (int)(Math.random() * ((max - min) + 1));
+    int irandomRange(int min, int max){
+        // so random lmao
+        return (int) (Math.random() * (max - min + 1)) + min;
     }
 
     void createObsticle(){
