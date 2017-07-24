@@ -188,7 +188,7 @@ public class AndroidLauncher extends AndroidApplication implements AdHandler{ //
 			}
 		});
 		adView.setAdSize(AdSize.SMART_BANNER);
-		adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+		adView.setAdUnitId("ca-app-pub-7220882176968020/2582474393");
 		// test key (ca-app-pub-3940256099942544/6300978111)
 		// release key (ca-app-pub-7220882176968020/2582474393)
 

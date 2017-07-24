@@ -168,10 +168,10 @@ public class ObjectHandler {
 
         // Ay lmao
         int chance;
-        if (Game.score >= 50) {
-            chance = irandomRange(0, 3);
+        if (Game.score < 50) {
+            chance = irandomRange(1, 3);
         } else {
-            chance = irandomRange(1,3);
+            chance = irandomRange(0,3);
         }
 
         switch (chance){

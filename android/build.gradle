@@ -1,12 +1,19 @@
 android {
 
-    //apply plugin: 'com.google.gms.google-services'
-
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
     signingConfigs {
         config {
             keyAlias 'SkyBouncerDebugkey'
             keyPassword '123xd123'
             storeFile file('nycklar.jks')
+            storePassword '123xd123'
+        }
+        config1 {
+            keyAlias 'SkyBouncerDebugkey'
+            keyPassword '123xd123'
+            storeFile file('C:/Users/elen99/Documents/projekt/android/nycklar.jks')
             storePassword '123xd123'
         }
     }
@@ -48,6 +55,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config1
         }
         debug {
             signingConfig signingConfigs.config
@@ -152,4 +160,7 @@ idea {
             }
         }
     }
+}
+
+dependencies {
 }
