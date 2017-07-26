@@ -6,9 +6,11 @@ import com.rawgames.skybouncer.utils.AdHandler;
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;
 
+
 public class IOSLauncher extends IOSApplication.Delegate implements AdHandler{
 
     private boolean adsInitialized = false;
+
 
     private IOSApplication iosApp;
 

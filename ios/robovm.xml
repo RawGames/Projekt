@@ -32,12 +32,15 @@
       <pattern>org.apache.harmony.security.provider.cert.DRLCertFactory</pattern>
       <pattern>org.apache.harmony.security.provider.crypto.CryptoProvider</pattern>
     </forceLinkClasses>
+
     <libs>
         <lib>z</lib>
+        <lib>libs/mopub/libs/libmopub.a</lib>
     </libs>
 
     <frameworkPaths>
         <path>build/libs</path>
+        <path>libs</path>
     </frameworkPaths>
 
     <frameworks>
