@@ -35,7 +35,6 @@
 
     <libs>
         <lib>z</lib>
-        <lib>libs/mopub/libs/libmopub.a</lib>
     </libs>
 
     <frameworkPaths>
