@@ -20,6 +20,8 @@
     <string>${app.version}</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>6.0.0</string>
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
     <key>CFBundleVersion</key>
