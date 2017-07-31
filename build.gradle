@@ -77,6 +77,11 @@ project(":android") {
         apply plugin: "java"
         apply plugin: "robovm"
 
+        robovm{
+            iosSignIdentity="F68D10AC25A0BD6FECE15D0F7741173592EB7B19"
+
+            iosSkipSigning = false
+        }
 
         dependencies {
             compile project(":core")
